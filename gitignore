@@ -1,0 +1,35 @@
+# OSX       taken from: https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
+# ----------------------------------------------------------------------------------------------
+.DS_Store
+# Thumbnails
+._*
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Tags      taken from: https://github.com/github/gitignore/blob/master/Global/Tags.gitignore
+# ----------------------------------------------------------------------------------------------
+# Ignore tags created by etags and ctags
+TAGS
+tags
+
+# Vim       taken from: https://github.com/github/gitignore/blob/master/Global/vim.gitignore
+# ----------------------------------------------------------------------------------------------
+.*.sw[a-z]
+*.un~
+.*.un~
+Session.vim
+
+# SASS
+# ----------------------------------------------------------------------------------------------
+.sass-cache
+
+# Python
+# ----------------------------------------------------------------------------------------------
+*.pyc
+
+# Java
+# ----------------------------------------------------------------------------------------------
+hs_err_pid*.log
+
+*~

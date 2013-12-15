@@ -1,0 +1,98 @@
+# Environment variables for Zsh and Bash
+# This file must be sourced after .variables
+# and before .aliases
+# Order for sourcing
+#   1. .variables
+#   2. .path
+#   3. .aliases
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+if [ "$HOSTNAME" = 'kusanagi' ]; then
+    # Android development
+    export PATH=$HOME/Applications/android-developer-tools/sdk/tools:$HOME/Applications/android-developer-tools/sdk/platform-tools:$HOME/Applications/android-developer-tools/ndk:$PATH
+
+elif [ "$HOSTNAME" = 'yamato' ]; then
+    # Android development
+    export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/Applications/android-developer-tools/ndk:$PATH"
+
+elif [ "$HOSTNAME" = "iwakura" ]; then
+    # Android tools
+    export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$HOME/Applications/android-studio/bin:$ANDROID_NDK:$PATH"
+    export PATH="$PATH:$ANDROID_HOME/build-tools/22.0.1"
+
+elif [ "$HOSTNAME" = "NOTE-360" ]; then
+    # Android tools
+    export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$HOME/Applications/android-studio/bin:$ANDROID_NDK:$PATH"
+    export PATH="$PATH:$ANDROID_HOME/build-tools/22.0.1"
+
+elif [ "$HOSTNAME" = "skye" ]; then
+    # Android tools
+    export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$HOME/Applications/android-studio/bin:$ANDROID_NDK:$PATH"
+    export PATH="$PATH:$ANDROID_HOME/build-tools/22.0.1"
+
+    # Google App Engine
+    export PATH="$HOME/Applications/google_appengine:$PATH"
+fi
+
+if [ -d "$HOME/.cabal/bin" ]; then
+    export PATH=$HOME/.cabal/bin:$PATH
+fi
+
+if [ -d "/usr/local/go" ]; then
+    export PATH=$PATH:$GOBIN
+fi
+
+if [ -d "/opt/PostgreSQL/9.1/bin" ]; then
+    export PATH=/opt/PostgreSQL/9.1/bin:$PATH
+fi
+
+
+#if [ -d "/Applications/Postgres.app/Contents/MacOS/bin" ]; then
+#    export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+#fi
+
+#if [ -d "/usr/local/share/python3" ]; then
+#    export PATH="/usr/local/share/python3:$PATH"
+#fi
+
+if [ -d "$HOME/Applications/go_appengine" ]; then
+    export PATH="$HOME/Applications/go_appengine:$PATH"
+fi
+
+# For MacPorts
+#if [ -d "/opt/local/bin" ]; then
+#    export PATH="/opt/local/bin:$PATH"
+#fi
+
+# Gradle
+if [ -d "$HOME/Applications/gradle-current" ]; then
+    export PATH="$HOME/Applications/gradle-current/bin:$PATH"
+fi
+
+if [ -n "$PLAN9" ]; then
+    export PATH=$PATH:$PLAN9/bin
+fi
+
+###########################################################################
+# Chromium                                                                #
+###########################################################################
+if [ -d "~/src/others/depot_tools" ]; then
+    export PATH="$PATH:~/src/others/depot_tools"
+fi
+
+# My custom binaries
+#export PATH="/Applications/Android Studio.app/sdk/build-tools/android-4.4W:$PATH"
+export PATH=$HOME/bin:$PATH
+export PATH=$PATH:$HOME/Applications/apache-maven/bin
+
+
+if [ -d "$HOME/Applications/google-cloud-sdk/bin" ]; then
+    export PATH="$PATH:$HOME/Applications/google-cloud-sdk/bin" 
+fi
+
+export PATH=$JAVA_HOME/bin:$PATH
+
+if [ -d "$HOME/.rvm" ]; then
+    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+fi

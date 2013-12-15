@@ -1,0 +1,120 @@
+# Environment variables for Zsh and Bash
+# This file must be sourced before .path
+# Order for sourcing
+#   1. .variables
+#   2. .path
+#   3. .aliases
+
+export HOSTNAME="`hostname -s`"
+export PAGER='less'
+export TZ="America/Sao_Paulo"
+export ENVIRONMENT=$(uname)
+export HISTFILE="$HOME/.zhistfile"
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+
+if [ "$HOSTNAME" = "NOTE-360" ]; then
+    export GDRIVE="$HOME/GDrive/douglas.drumond@movile.com"
+elif [ "$HOSTNAME" = "iwakura" ]; then
+    export GDRIVE="$HOME/Documents/GDrive/douglas@mokriya.com"
+else
+    export GDRIVE="$HOME/GDrive/douglas@cafelinear.com"
+fi
+
+if [ "$ENVIRONMENT" = "Linux" ]; then
+    export EDITOR="vim"
+else
+    export EDITOR='mvim -v'
+    #export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
+fi
+export GIT_EDITOR="$EDITOR"
+
+if [ "$HOSTNAME" = "NOTE-360" ]; then
+    export GIT_AUTHOR_EMAIL="douglas.drumond@movile.com"
+    export GIT_COMMITTER_EMAIL="douglas.drumond@movile.com"
+elif [ "$HOSTNAME" = "iwakura" ]; then
+    export GIT_AUTHOR_EMAIL="douglas@mokriya.com"
+    export GIT_COMMITTER_EMAIL="douglas@mokriya.com"
+fi
+
+###########################################################################
+# Go language variables                                                   #
+###########################################################################
+if [ -d /usr/local/go ]; then
+    export GOROOT=/usr/local/go
+    export GOBIN=$GOROOT/bin
+    export GOPATH=$HOME/go
+fi
+
+
+###########################################################################
+# Java                                                                    #
+###########################################################################
+if [ "$HOSTNAME" = "skye" ]; then
+    export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+    export JAVA7_HOME="/usr/lib/jvm/java-7-oracle"
+elif [ "$HOSTNAME" = "NOTE-360" ]; then
+    export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+    export JAVA7_HOME="/usr/lib/jvm/java-7-oracle"
+fi
+
+if [ "$ENVIRONMENT" = "Darwin" ]; then
+    export JAVA_HOME=$(/usr/libexec/java_home)
+    export JAVA7_HOME=$(/usr/libexec/java_home -v 1.7)
+fi
+
+###########################################################################
+# For Android source                                                      #
+###########################################################################
+ulimit -S -n 1024
+export REPO_TRACE=1
+export USE_CCACHE=1
+export ANDROID_HOME="/Applications/android-sdk"
+export ANDROID_NDK="/Applications/android-ndk"
+if [ "$HOSTNAME" = "skye" ]; then
+    export ANDROID_HOME="$HOME/Applications/android-sdk"
+    export ANDROID_NDK="$HOME/Applications/android-ndk"
+elif [ "$HOSTNAME" = "NOTE-360" ]; then
+    export ANDROID_HOME="$HOME/Applications/android-sdk"
+    export ANDROID_NDK="$HOME/Applications/android-ndk"
+elif [ "$HOSTNAME" = "yamato" ]; then
+    export ANDROID_HOME="/Applications/Android/sdk"
+    export ANDROID_NDK="$HOME/Applications/android-ndk"
+    export M2_HOME="/usr/local/Cellar/maven/3.2.2/libexec"
+elif [ "$HOSTNAME" = "iwakura" ]; then
+    export ANDROID_HOME="$HOME/Applications/android-sdk"
+    export ANDROID_NDK="$HOME/Applications/android-ndk"
+fi
+
+export ANDROID_SDK="$ANDROID_HOME"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
+export NDK="$ANDROID_NDK"
+export NDK_HOME="$ANDROID_NDK"
+###########################################################################
+
+
+###########################################################################
+# Gradle                                                                  #
+###########################################################################
+if [ -d "$HOME/Applications/gradle-current" ]; then
+    export GRADLE_HOME=$HOME/Applications/gradle-current
+fi
+###########################################################################
+
+###########################################################################
+# PLAN9                                                                   #
+###########################################################################
+if [ -d "/usr/local/plan9" ]; then
+    export PLAN9=/usr/local/plan9
+fi
+###########################################################################
+
+export NVM_DIR="$HOME/.nvm"
+
+export TODOTXT_DEFAULT_ACTION=ls
+export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'
+
+if [ "$ENVIRONMENT" = "Linux" ]; then
+    GTK_IM_MODULE=cedilla
+    QT_IM_MODULE=cedilla
+fi
