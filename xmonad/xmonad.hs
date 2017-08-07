@@ -1,4 +1,3 @@
-
 import XMonad
 import XMonad.Util.EZConfig
 import qualified XMonad.StackSet as W
