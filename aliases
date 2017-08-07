@@ -90,3 +90,5 @@ alias gw=./gradlew
 alias cddot="cd $HOME/Developer/dotfiles"
 alias cdvim="cd $HOME/Developer/vimfiles"
 
+alias evim="emacsclient -c -a emacs"
+alias tevim="emacsclient -t"
