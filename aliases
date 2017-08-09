@@ -92,3 +92,6 @@ alias cdvim="cd $HOME/Developer/vimfiles"
 
 alias evim="emacsclient -c -a emacs"
 alias tevim="emacsclient -t"
+
+alias weather='curl -s wttr.in | sed -n "1,7p"'
+alias w=weather
