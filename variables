@@ -69,22 +69,8 @@ fi
 ulimit -S -n 1024
 export REPO_TRACE=1
 export USE_CCACHE=1
-export ANDROID_HOME="/Applications/android-sdk"
-export ANDROID_NDK="/Applications/android-ndk"
-if [ "$HOSTNAME" = "skye" ]; then
-    export ANDROID_HOME="$HOME/Applications/android-sdk"
-    export ANDROID_NDK="$HOME/Applications/android-ndk"
-elif [ "$HOSTNAME" = "NOTE-360" ]; then
-    export ANDROID_HOME="$HOME/Applications/android-sdk"
-    export ANDROID_NDK="$HOME/Applications/android-ndk"
-elif [ "$HOSTNAME" = "yamato" ]; then
-    export ANDROID_HOME="/Applications/Android/sdk"
-    export ANDROID_NDK="$HOME/Applications/android-ndk"
-    export M2_HOME="/usr/local/Cellar/maven/3.2.2/libexec"
-elif [ "$HOSTNAME" = "iwakura" ]; then
-    export ANDROID_HOME="$HOME/Applications/android-sdk"
-    export ANDROID_NDK="$HOME/Applications/android-ndk"
-fi
+export ANDROID_HOME="$HOME/Applications/android-sdk"
+export ANDROID_NDK="$HOME/Applications/android-ndk"
 
 export ANDROID_SDK="$ANDROID_HOME"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
