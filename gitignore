@@ -33,3 +33,6 @@ Session.vim
 hs_err_pid*.log
 
 *~
+.idea/markdown-navigator
+.idea/dictionaries/doug.xml
+.#*
