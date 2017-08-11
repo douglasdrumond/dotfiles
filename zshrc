@@ -110,7 +110,7 @@ function gi() { curl "https://www.gitignore.io/api/$@" ;}
 eval "$(thefuck --alias)"
 
 function gnf() { git checkout -b feature/$@ }
-function gcf() { git checkout feature/$@ }
+function gcof() { git checkout feature/$@ }
 
 if [ -d "$HOME/.rvm" ]; then
     source $HOME/.rvm/scripts/rvm
