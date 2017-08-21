@@ -1,0 +1,2690 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for phpDebug.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> phpDebug.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">67.05% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>295/440</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60.2% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>118/196</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">76.71% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>56/73</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">66.83% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>280/419</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876</td><td class="line-coverage quiet"><span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">151x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">138x</span>
+<span class="cline-any cline-yes">138x</span>
+<span class="cline-any cline-yes">112x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">151x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">46x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">136x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">136x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">150x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">137x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as vscode from 'vscode-debugadapter';
+import {DebugProtocol as VSCodeDebugProtocol} from 'vscode-debugprotocol';
+import * as net from 'net';
+import * as xdebug from './xdebugConnection';
+import moment = require('moment');
+import * as url from 'url';
+import * as childProcess from 'child_process';
+import * as path from 'path';
+import * as util from 'util';
+import * as fs from 'fs';
+import {Terminal} from './terminal';
+import {isSameUri, convertClientPathToDebugger, convertDebuggerPathToClient} from './paths';
+import minimatch = require('minimatch');
+&nbsp;
+<span class="missing-if-branch" title="if path not taken" >I</span>if (process.env['VSCODE_NLS_CONFIG']) {
+<span class="cstat-no" title="statement not covered" >    try {</span>
+<span class="cstat-no" title="statement not covered" >        moment.locale(JSON.parse(process.env['VSCODE_NLS_CONFIG']).locale);</span>
+    } catch (e) {
+        // ignore
+    }
+}
+&nbsp;
+/** formats a xdebug property value for VS Code */
+function formatPropertyValue(property: xdebug.BaseProperty): string {
+    let displayValue: string;
+    if (property.hasChildren || property.type === 'array' || property.type === 'object') {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (property.type === 'array') {
+            // for arrays, show the length, like a var_dump would do
+            displayValue = 'array(' + (property.hasChildren ? property.numberOfChildren : <span class="branch-1 cbranch-no" title="branch not covered" >0)</span> + ')';
+        } else <span class="cstat-no" title="statement not covered" >if (property.type === 'object' &amp;&amp; property.class) {</span>
+            // for objects, show the class name as type (if specified)
+<span class="cstat-no" title="statement not covered" >            displayValue = property.class;</span>
+        } else {
+            // edge case: show the type of the property as the value
+<span class="cstat-no" title="statement not covered" >            displayValue = property.type;</span>
+        }
+    } else {
+        // for null, uninitialized, resource, etc. show the type
+        displayValue = property.value || property.type === 'string' ? property.value : property.type;
+        if (property.type === 'string') {
+            displayValue = '"' + displayValue + '"';
+        } else if (property.type === 'bool') {
+            displayValue = !!parseInt(displayValue) + '';
+        }
+    }
+    return displayValue;
+}
+&nbsp;
+/**
+ * This interface should always match the schema found in the mock-debug extension manifest.
+ */
+interface LaunchRequestArguments extends VSCodeDebugProtocol.LaunchRequestArguments {
+    /** The port where the adapter should listen for XDebug connections (default: 9000) */
+    port?: number;
+    /** Automatically stop target after launch. If not specified, target does not stop. */
+    stopOnEntry?: boolean;
+    /** The source root on the server when doing remote debugging on a different host */
+    serverSourceRoot?: string;
+    /** The path to the source root on this machine that is the equivalent to the serverSourceRoot on the server. */
+    localSourceRoot?: string;
+    /** If true, will log all communication between VS Code and the adapter to the console */
+    log?: boolean;
+    /** Array of glob patterns that errors should be ignored from */
+    ignore?: string[];
+    /** XDebug configuration */
+    xdebugSettings?: { [featureName: string]: string | number; };
+&nbsp;
+    // CLI options
+&nbsp;
+    /** If set, launches the specified PHP script in CLI mode */
+    program?: string;
+    /** Optional arguments passed to the debuggee. */
+    args?: string[];
+    /** Launch the debuggee in this working directory (specified as an absolute path). If omitted the debuggee is lauched in its own directory. */
+    cwd?: string;
+    /** Absolute path to the runtime executable to be used. Default is the runtime executable on the PATH. */
+    runtimeExecutable?: string;
+    /** Optional arguments passed to the runtime executable. */
+    runtimeArgs?: string[];
+    /** Optional environment variables to pass to the debuggee. The string valued properties of the 'environmentVariables' are used as key/value pairs. */
+    env?: { [key: string]: string; };
+    /** If true launch the target in an external console. */
+    externalConsole?: boolean;
+}
+&nbsp;
+class PhpDebugSession extends vscode.DebugSession {
+&nbsp;
+    /** The arguments that were given to launchRequest */
+    private _args: LaunchRequestArguments;
+&nbsp;
+    /** The TCP server that listens for XDebug connections */
+    private _server: net.Server;
+&nbsp;
+    /** The child process of the launched PHP script, if launched by the debug adapter */
+    private _phpProcess?: childProcess.ChildProcess;
+&nbsp;
+    /**
+     * A map from VS Code thread IDs to XDebug Connections.
+     * XDebug makes a new connection for each request to the webserver, we present these as threads to VS Code.
+     * The threadId key is equal to the id attribute of the connection.
+     */
+    private _connections = new Map&lt;number, xdebug.Connection&gt;();
+&nbsp;
+    /** A set of connections which are not yet running and are waiting for configurationDoneRequest */
+    private _waitingConnections = new Set&lt;xdebug.Connection&gt;();
+&nbsp;
+    /** A counter for unique source IDs */
+    private _sourceIdCounter = 1;
+&nbsp;
+    /** A map of VS Code source IDs to XDebug file URLs for virtual files (dpgp://whatever) and the corresponding connection */
+    private _sources = new Map&lt;number, {connection: xdebug.Connection, url: string}&gt;();
+&nbsp;
+    /** A counter for unique stackframe IDs */
+    private _stackFrameIdCounter = 1;
+&nbsp;
+    /** A map from unique stackframe IDs (even across connections) to XDebug stackframes */
+    private _stackFrames = new Map&lt;number, xdebug.StackFrame&gt;();
+&nbsp;
+    /** A map from XDebug connections to their current status */
+    private _statuses = new Map&lt;xdebug.Connection, xdebug.StatusResponse&gt;();
+&nbsp;
+    /** A counter for unique context, property and eval result properties (as these are all requested by a VariableRequest from VS Code) */
+    private _variableIdCounter = 1;
+&nbsp;
+    /** A map from unique VS Code variable IDs to XDebug statuses for virtual error stack frames */
+    private _errorStackFrames = new Map&lt;number, xdebug.StatusResponse&gt;();
+&nbsp;
+    /** A map from unique VS Code variable IDs to XDebug statuses for virtual error scopes */
+    private _errorScopes = new Map&lt;number, xdebug.StatusResponse&gt;();
+&nbsp;
+    /** A map from unique VS Code variable IDs to an XDebug contexts */
+    private _contexts = new Map&lt;number, xdebug.Context&gt;();
+&nbsp;
+    /** A map from unique VS Code variable IDs to a XDebug properties */
+    private _properties = new Map&lt;number, xdebug.Property&gt;();
+&nbsp;
+    /** A map from unique VS Code variable IDs to XDebug eval result properties, because property children returned from eval commands are always inlined */
+    private _evalResultProperties = new Map&lt;number, xdebug.EvalResultProperty&gt;();
+&nbsp;
+    public constructor() {
+        super();
+        this.setDebuggerColumnsStartAt1(true);
+        this.setDebuggerLinesStartAt1(true);
+        this.setDebuggerPathFormat('uri');
+    }
+&nbsp;
+    protected initializeRequest(response: VSCodeDebugProtocol.InitializeResponse, args: VSCodeDebugProtocol.InitializeRequestArguments): void {
+        response.body = {
+            supportsConfigurationDoneRequest: true,
+            supportsEvaluateForHovers: false,
+            supportsConditionalBreakpoints: true,
+            supportsFunctionBreakpoints: true,
+            exceptionBreakpointFilters: [
+                {
+                    filter: 'Notice',
+                    label: 'Notices'
+                },
+                {
+                    filter: 'Warning',
+                    label: 'Warnings'
+                },
+                {
+                    filter: 'Error',
+                    label: 'Errors'
+                },
+                {
+                    filter: 'Exception',
+                    label: 'Exceptions'
+                },
+                {
+                    filter: '*',
+                    label: 'Everything',
+                    default: true
+                }
+            ]
+        };
+        this.sendResponse(response);
+    }
+&nbsp;
+    protected <span class="fstat-no" title="function not covered" >attachRequest</span>(response: VSCodeDebugProtocol.AttachResponse, args: VSCodeDebugProtocol.AttachRequestArguments) {
+<span class="cstat-no" title="statement not covered" >        this.sendErrorResponse(response, new Error('Attach requests are not supported'));</span>
+<span class="cstat-no" title="statement not covered" >        this.shutdown();</span>
+    }
+&nbsp;
+    protected async launchRequest(response: VSCodeDebugProtocol.LaunchResponse, args: LaunchRequestArguments) {
+        this._args = args;
+        /** launches the script as CLI */
+        const launchScript = async () =&gt; {
+            // check if program exists
+            await new Promise((resolve, reject) =&gt; fs.access(args.program!, fs.constants.F_OK, err =&gt; err ? reject(err) : resolve()));
+            const runtimeArgs = args.runtimeArgs || [];
+            const runtimeExecutable = args.runtimeExecutable || 'php';
+            const programArgs = args.args || [];
+            const cwd = args.cwd || process.cwd();
+            const env = args.env || process.env;
+            // launch in CLI mode
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (args.externalConsole) {
+                const script = <span class="cstat-no" title="statement not covered" >await Terminal.launchInTerminal(cwd, [runtimeExecutable, ...runtimeArgs, args.program!, ...programArgs], env);</span>
+                // we only do this for CLI mode. In normal listen mode, only a thread exited event is send.
+<span class="cstat-no" title="statement not covered" >                script.on('exit', <span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >                    this.sendEvent(new vscode.TerminatedEvent());</span>
+                });
+            } else {
+                const script = childProcess.spawn(runtimeExecutable, [...runtimeArgs, args.program!, ...programArgs], {cwd, env});
+                // redirect output to debug console
+                script.stdout.on('data', (data: Buffer) =&gt; {
+                    this.sendEvent(new vscode.OutputEvent(data + '', 'stdout'));
+                });
+                script.stderr.on('data', (data: Buffer) =&gt; {
+                    this.sendEvent(new vscode.OutputEvent(data + '', 'stderr'));
+                });
+                // we only do this for CLI mode. In normal listen mode, only a thread exited event is send.
+                script.on('exit', () =&gt; {
+                    this.sendEvent(new vscode.TerminatedEvent());
+                });
+                script.on('error', <span class="fstat-no" title="function not covered" >(e</span>rror: Error) =&gt; {
+<span class="cstat-no" title="statement not covered" >                    this.sendEvent(new vscode.OutputEvent(error.message));</span>
+                });
+                this._phpProcess = script;
+            }
+        };
+        /** sets up a TCP server to listen for XDebug connections */
+        const createServer = () =&gt; new Promise((resolve, reject) =&gt; {
+            const server = this._server = net.createServer();
+            server.on('connection', async (socket: net.Socket) =&gt; {
+                try {
+                    // new XDebug connection
+                    const connection = new xdebug.Connection(socket);
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (args.log) {
+<span class="cstat-no" title="statement not covered" >                        this.sendEvent(new vscode.OutputEvent('new connection ' + connection.id + '\n'), true);</span>
+                    }
+                    this._connections.set(connection.id, connection);
+                    this._waitingConnections.add(connection);
+                    const disposeConnection = (error?: Error) =&gt; {
+                        if (this._connections.has(connection.id)) {
+                            <span class="missing-if-branch" title="if path not taken" >I</span>if (args.log) {
+<span class="cstat-no" title="statement not covered" >                                this.sendEvent(new vscode.OutputEvent('connection ' + connection.id + ' closed\n'));</span>
+                            }
+                            <span class="missing-if-branch" title="if path not taken" >I</span>if (error) {
+<span class="cstat-no" title="statement not covered" >                                this.sendEvent(new vscode.OutputEvent(error.message));</span>
+                            }
+                            this.sendEvent(new vscode.ThreadEvent('exited', connection.id));
+                            connection.close();
+                            this._connections.delete(connection.id);
+                            this._waitingConnections.delete(connection);
+                        }
+                    };
+                    connection.on('warning', <span class="fstat-no" title="function not covered" >(w</span>arning: string) =&gt; {
+<span class="cstat-no" title="statement not covered" >                        this.sendEvent(new vscode.OutputEvent(warning));</span>
+                    });
+                    connection.on('error', disposeConnection);
+                    connection.on('close', disposeConnection);
+                    await connection.waitForInitPacket();
+                    this.sendEvent(new vscode.ThreadEvent('started', connection.id));
+&nbsp;
+                    // override features from launch.json
+                    const xdebugSettings = args.xdebugSettings || {};
+                    await Promise.all(Object.keys(xdebugSettings).map(setting =&gt;
+                        connection.sendFeatureSetCommand(setting, xdebugSettings[setting])
+                    ));
+&nbsp;
+                    // request breakpoints from VS Code
+                    await this.sendEvent(new vscode.InitializedEvent());
+                } catch (error) {
+<span class="cstat-no" title="statement not covered" >                    this.sendEvent(new vscode.OutputEvent(error instanceof Error ? error.message : error));</span>
+                }
+            });
+            server.on('error', <span class="fstat-no" title="function not covered" >(e</span>rror: Error) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this.sendEvent(new vscode.OutputEvent(error.message));</span>
+<span class="cstat-no" title="statement not covered" >                this.shutdown();</span>
+            });
+            server.listen(args.port || 9000, (error: NodeJS.ErrnoException) =&gt; error ? <span class="branch-0 cbranch-no" title="branch not covered" >reject(error) </span>: resolve());
+        });
+        try {
+            if (!args.noDebug) {
+                await createServer();
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (args.program) {
+                await launchScript();
+            }
+        } catch (error) {
+            this.sendErrorResponse(response, &lt;Error&gt;error);
+            return;
+        }
+        this.sendResponse(response);
+    }
+&nbsp;
+    /**
+     * Checks the status of a StatusResponse and notifies VS Code accordingly
+     * @param {xdebug.StatusResponse} response
+     */
+    private async _checkStatus(response: xdebug.StatusResponse): Promise&lt;void&gt; {
+        const connection = response.connection;
+        this._statuses.set(connection, response);
+        if (response.status === 'stopping') {
+            const response = await connection.sendStopCommand();
+            this._checkStatus(response);
+        } else if (response.status === 'stopped') {
+            this._connections.delete(connection.id);
+            this.sendEvent(new vscode.ThreadEvent('exited', connection.id));
+            connection.close();
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>if (response.status === 'break') {
+            // StoppedEvent reason can be 'step', 'breakpoint', 'exception' or 'pause'
+            let stoppedEventReason: 'step' | 'breakpoint' | 'exception' | 'pause' | 'entry';
+            let exceptionText: string | undefined;
+            if (response.exception) {
+                // If one of the ignore patterns matches, ignore this exception
+                if (this._args.ignore &amp;&amp; this._args.ignore.some(glob =&gt; minimatch(convertDebuggerPathToClient(response.fileUri).replace(/\\/g, '/'), glob))) {
+                    const response = await connection.sendRunCommand();
+                    await this._checkStatus(response);
+                    return;
+                }
+                stoppedEventReason = 'exception';
+                exceptionText = response.exception.name + ': ' + response.exception.message; // this seems to be ignored currently by VS Code
+            } else if (this._args.stopOnEntry) {
+                stoppedEventReason = 'entry';
+            } else <span class="missing-if-branch" title="if path not taken" >I</span>if (response.command.indexOf('step') === 0) {
+<span class="cstat-no" title="statement not covered" >                stoppedEventReason = 'step';</span>
+            } else {
+                stoppedEventReason = 'breakpoint';
+            }
+            const event: VSCodeDebugProtocol.StoppedEvent = new vscode.StoppedEvent(stoppedEventReason, connection.id, exceptionText);
+            event.body.allThreadsStopped = false;
+            this.sendEvent(event);
+        }
+    }
+&nbsp;
+    /** Logs all requests before dispatching */
+    protected dispatchRequest(request: VSCodeDebugProtocol.Request): void {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this._args &amp;&amp; this._args.log) {
+            const log = <span class="cstat-no" title="statement not covered" >`-&gt; ${request.command}Request\n${util.inspect(request, {depth: Infinity})}\n\n`;</span>
+<span class="cstat-no" title="statement not covered" >            super.sendEvent(new vscode.OutputEvent(log));</span>
+        }
+        super.dispatchRequest(request);
+    }
+&nbsp;
+    public sendEvent(event: VSCodeDebugProtocol.Event, bypassLog: boolean = false): void {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this._args &amp;&amp; this._args.log &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >!bypassLog)</span> {
+            const log = <span class="cstat-no" title="statement not covered" >`&lt;- ${event.event}Event\n${util.inspect(event, {depth: Infinity})}\n\n`;</span>
+<span class="cstat-no" title="statement not covered" >            super.sendEvent(new vscode.OutputEvent(log));</span>
+        }
+        super.sendEvent(event);
+    }
+&nbsp;
+    public sendResponse(response: VSCodeDebugProtocol.Response): void {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this._args &amp;&amp; this._args.log) {
+            const log = <span class="cstat-no" title="statement not covered" >`&lt;- ${response.command}Response\n${util.inspect(response, {depth: Infinity})}\n\n`;</span>
+<span class="cstat-no" title="statement not covered" >            super.sendEvent(new vscode.OutputEvent(log));</span>
+        }
+        super.sendResponse(response);
+    }
+&nbsp;
+    protected sendErrorResponse(response: VSCodeDebugProtocol.Response, error: Error, dest?: vscode.ErrorDestination): void;
+    protected sendErrorResponse(response: VSCodeDebugProtocol.Response, codeOrMessage: number | VSCodeDebugProtocol.Message, format?: string, variables?: any, dest?: vscode.ErrorDestination): void;
+    protected sendErrorResponse(response: VSCodeDebugProtocol.Response) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (arguments[1] instanceof Error) {
+            const error = arguments[1] as Error &amp; {code?: number|string, errno?: number};
+            const dest = arguments[2] as vscode.ErrorDestination;
+            let code: number;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof error.code === 'number') {
+<span class="cstat-no" title="statement not covered" >                code = error.code as number;</span>
+            } else if (typeof error.errno === 'number') {
+                code = error.errno;
+            } else {
+                code = 0;
+            }
+            super.sendErrorResponse(response, code, error.message, dest);
+        } else {
+<span class="cstat-no" title="statement not covered" >            super.sendErrorResponse(response, arguments[1], arguments[2], arguments[3], arguments[4]);</span>
+        }
+    }
+&nbsp;
+    /** This is called for each source file that has breakpoints with all the breakpoints in that file and whenever these change. */
+    protected async setBreakPointsRequest(response: VSCodeDebugProtocol.SetBreakpointsResponse, args: VSCodeDebugProtocol.SetBreakpointsArguments) {
+        try {
+            const fileUri = convertClientPathToDebugger(args.source.path!, this._args.localSourceRoot, this._args.serverSourceRoot);
+            const connections = Array.from(this._connections.values());
+            let xdebugBreakpoints: Array&lt;xdebug.ConditionalBreakpoint|xdebug.LineBreakpoint&gt;;
+            response.body = {breakpoints: []};
+            // this is returned to VS Code
+            let vscodeBreakpoints: VSCodeDebugProtocol.Breakpoint[];
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (connections.length === 0) {
+                // if there are no connections yet, we cannot verify any breakpoint
+<span class="cstat-no" title="statement not covered" >                vscodeBreakpoints = args.breakpoints!.map(<span class="fstat-no" title="function not covered" >breakpoint</span> =&gt; (<span class="cstat-no" title="statement not covered" >{verified: false, line: breakpoint.line})</span>);</span>
+            } else {
+                vscodeBreakpoints = [];
+                // create XDebug breakpoints from the arguments
+                xdebugBreakpoints = args.breakpoints!.map(breakpoint =&gt; {
+                    if (breakpoint.condition) {
+                        return new xdebug.ConditionalBreakpoint(breakpoint.condition, fileUri, breakpoint.line);
+                    } else {
+                        return new xdebug.LineBreakpoint(fileUri, breakpoint.line);
+                    }
+                });
+                // for all connections
+                await Promise.all(connections.map(async (connection, connectionIndex) =&gt; {
+                    // clear breakpoints for this file
+                    // in the future when VS Code returns the breakpoint IDs it would be better to calculate the diff
+                    const {breakpoints} = await connection.sendBreakpointListCommand();
+                    await Promise.all(
+                        breakpoints
+                            // filter to only include line breakpoints for this file
+                            .filter(breakpoint =&gt; breakpoint instanceof xdebug.LineBreakpoint &amp;&amp; isSameUri(fileUri, breakpoint.fileUri))
+                            // remove them
+                            .map(breakpoint =&gt; breakpoint.remove())
+                    );
+                    // set new breakpoints
+                    await Promise.all(xdebugBreakpoints.map(async (breakpoint, index) =&gt; {
+                        try {
+                            await connection.sendBreakpointSetCommand(breakpoint);
+                            // only capture each breakpoint once
+                            <span class="missing-if-branch" title="else path not taken" >E</span>if (connectionIndex === 0) {
+                                vscodeBreakpoints[index] = {verified: true, line: breakpoint.line};
+                            }
+                        } catch (error) {
+                            // only capture each breakpoint once
+<span class="cstat-no" title="statement not covered" >                            if (connectionIndex === 0) {</span>
+<span class="cstat-no" title="statement not covered" >                                vscodeBreakpoints[index] = {verified: false, line: breakpoint.line, message: (&lt;Error&gt;error).message};</span>
+                            }
+                        }
+                    }));
+                }));
+            }
+            response.body = {breakpoints: vscodeBreakpoints};
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        this.sendResponse(response);
+    }
+&nbsp;
+    /** This is called once after all line breakpoints have been set and whenever the breakpoints settings change */
+    protected async setExceptionBreakPointsRequest(response: VSCodeDebugProtocol.SetExceptionBreakpointsResponse, args: VSCodeDebugProtocol.SetExceptionBreakpointsArguments) {
+        try {
+            const connections = Array.from(this._connections.values());
+            await Promise.all(connections.map(async (connection) =&gt; {
+                // get all breakpoints
+                const {breakpoints} = await connection.sendBreakpointListCommand();
+                // remove all exception breakpoints
+                await Promise.all(breakpoints.filter(<span class="fstat-no" title="function not covered" >breakpoint</span> =&gt; <span class="cstat-no" title="statement not covered" >breakpoint.type === 'exception')</span>.map(<span class="fstat-no" title="function not covered" >breakpoint</span> =&gt; <span class="cstat-no" title="statement not covered" >breakpoint.remove())</span>);
+                // set new exception breakpoints
+                await Promise.all(args.filters.map(filter =&gt; connection.sendBreakpointSetCommand(new xdebug.ExceptionBreakpoint(filter))));
+            }));
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        this.sendResponse(response);
+    }
+&nbsp;
+    protected async setFunctionBreakPointsRequest(response: VSCodeDebugProtocol.SetFunctionBreakpointsResponse, args: VSCodeDebugProtocol.SetFunctionBreakpointsArguments) {
+        try {
+            const connections = Array.from(this._connections.values());
+            // this is returned to VS Code
+            let vscodeBreakpoints: VSCodeDebugProtocol.Breakpoint[];
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (connections.length === 0) {
+                // if there are no connections yet, we cannot verify any breakpoint
+<span class="cstat-no" title="statement not covered" >                vscodeBreakpoints = args.breakpoints.map(<span class="fstat-no" title="function not covered" >breakpoint</span> =&gt; (<span class="cstat-no" title="statement not covered" >{verified: false, message: 'No connection'})</span>);</span>
+            } else {
+                vscodeBreakpoints = [];
+                // for all connections
+                await Promise.all(connections.map(async (connection, connectionIndex) =&gt; {
+                    // clear breakpoints for this file
+                    const {breakpoints} = await connection.sendBreakpointListCommand();
+                    await Promise.all(breakpoints.filter(<span class="fstat-no" title="function not covered" >breakpoint</span> =&gt; <span class="cstat-no" title="statement not covered" >breakpoint.type === 'call')</span>.map(<span class="fstat-no" title="function not covered" >breakpoint</span> =&gt; <span class="cstat-no" title="statement not covered" >breakpoint.remove())</span>);
+                    // set new breakpoints
+                    await Promise.all(args.breakpoints.map(async (functionBreakpoint, index) =&gt; {
+                        try {
+                            await connection.sendBreakpointSetCommand(new xdebug.CallBreakpoint(functionBreakpoint.name, functionBreakpoint.condition));
+                            // only capture each breakpoint once
+                            <span class="missing-if-branch" title="else path not taken" >E</span>if (connectionIndex === 0) {
+                                vscodeBreakpoints[index] = {verified: true};
+                            }
+                        } catch (error) {
+                            // only capture each breakpoint once
+<span class="cstat-no" title="statement not covered" >                            if (connectionIndex === 0) {</span>
+<span class="cstat-no" title="statement not covered" >                                vscodeBreakpoints[index] = {verified: false, message: error instanceof Error ? error.message : error};</span>
+                            }
+                        }
+                    }));
+                }));
+            }
+            response.body = {breakpoints: vscodeBreakpoints};
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        this.sendResponse(response);
+    }
+&nbsp;
+    /** Executed after all breakpoints have been set by VS Code */
+    protected async configurationDoneRequest(response: VSCodeDebugProtocol.ConfigurationDoneResponse, args: VSCodeDebugProtocol.ConfigurationDoneArguments) {
+        let xdebugResponses: xdebug.StatusResponse[] = [];
+        try {
+            xdebugResponses = await Promise.all&lt;xdebug.StatusResponse&gt;(Array.from(this._waitingConnections).map(connection =&gt; {
+                this._waitingConnections.delete(connection);
+                // either tell VS Code we stopped on entry or run the script
+                if (this._args.stopOnEntry) {
+                    // do one step to the first statement
+                    return connection.sendStepIntoCommand();
+                } else {
+                    return connection.sendRunCommand();
+                }
+            }));
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, &lt;Error&gt;error);</span>
+<span class="cstat-no" title="statement not covered" >            for (const response of xdebugResponses) {</span>
+<span class="cstat-no" title="statement not covered" >                this._checkStatus(response);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        this.sendResponse(response);
+        for (const response of xdebugResponses) {
+            this._checkStatus(response);
+        }
+    }
+&nbsp;
+    /** Executed after a successfull launch or attach request and after a ThreadEvent */
+    protected <span class="fstat-no" title="function not covered" >threadsRequest</span>(response: VSCodeDebugProtocol.ThreadsResponse): void {
+        // PHP doesn't have threads, but it may have multiple requests in parallel.
+        // Think about a website that makes multiple, parallel AJAX requests to your PHP backend.
+        // XDebug opens a new socket connection for each of them, we tell VS Code that these are our threads.
+        const connections = <span class="cstat-no" title="statement not covered" >Array.from(this._connections.values());</span>
+<span class="cstat-no" title="statement not covered" >        response.body = {</span>
+            threads: connections.map(<span class="fstat-no" title="function not covered" >connection</span> =&gt; <span class="cstat-no" title="statement not covered" >new vscode.Thread(connection.id, `Request ${connection.id} (${moment(connection.timeEstablished).format('LTS')})`))</span>
+        };
+<span class="cstat-no" title="statement not covered" >        this.sendResponse(response);</span>
+    }
+&nbsp;
+    /** Called by VS Code after a StoppedEvent */
+    protected async stackTraceRequest(response: VSCodeDebugProtocol.StackTraceResponse, args: VSCodeDebugProtocol.StackTraceArguments) {
+        try {
+            const connection = this._connections.get(args.threadId);
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!connection) {
+<span class="cstat-no" title="statement not covered" >                throw new Error('Unknown thread ID');</span>
+            }
+            const {stack} = await connection.sendStackGetCommand();
+            // First delete the old stack trace info ???
+            // this._stackFrames.clear();
+            // this._properties.clear();
+            // this._contexts.clear();
+            const status = this._statuses.get(connection);
+            if (stack.length === 0 &amp;&amp; status &amp;&amp; status.exception) {
+                // special case: if a fatal error occurs (for example after an uncaught exception), the stack trace is EMPTY.
+                // in that case, VS Code would normally not show any information to the user at all
+                // to avoid this, we create a virtual stack frame with the info from the last status response we got
+                const status = this._statuses.get(connection)!;
+                const id = this._stackFrameIdCounter++;
+                const name = status.exception.name;
+                let line = status.line;
+                let source: VSCodeDebugProtocol.Source;
+                const urlObject = url.parse(status.fileUri);
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (urlObject.protocol === 'dbgp:') {
+                    const sourceReference = <span class="cstat-no" title="statement not covered" >this._sourceIdCounter++;</span>
+<span class="cstat-no" title="statement not covered" >                    this._sources.set(sourceReference, {connection, url: status.fileUri});</span>
+                    // for eval code, we need to include .php extension to get syntax highlighting
+<span class="cstat-no" title="statement not covered" >                    source = {name: status.exception.name + '.php', sourceReference, origin: status.exception.name};</span>
+                    // for eval code, we add a "&lt;?php" line at the beginning to get syntax highlighting (see sourceRequest)
+<span class="cstat-no" title="statement not covered" >                    line++;</span>
+                } else {
+                    // XDebug paths are URIs, VS Code file paths
+                    const filePath = convertDebuggerPathToClient(urlObject, this._args.localSourceRoot, this._args.serverSourceRoot);
+                    // "Name" of the source and the actual file path
+                    source = {name: path.basename(filePath), path: filePath};
+                }
+                this._errorStackFrames.set(id, status);
+                response.body = {stackFrames: [{id, name, source, line: status.line, column: 1}]};
+            } else {
+                response.body = {
+                    stackFrames: stack.map((stackFrame): VSCodeDebugProtocol.StackFrame =&gt; {
+                        let source: VSCodeDebugProtocol.Source;
+                        let line = stackFrame.line;
+                        const urlObject = url.parse(stackFrame.fileUri);
+                        <span class="missing-if-branch" title="if path not taken" >I</span>if (urlObject.protocol === 'dbgp:') {
+                            const sourceReference = <span class="cstat-no" title="statement not covered" >this._sourceIdCounter++;</span>
+<span class="cstat-no" title="statement not covered" >                            this._sources.set(sourceReference, {connection, url: stackFrame.fileUri});</span>
+                            // for eval code, we need to include .php extension to get syntax highlighting
+<span class="cstat-no" title="statement not covered" >                            source = {name: stackFrame.type === 'eval' ? 'eval.php' : stackFrame.name, sourceReference, origin: stackFrame.type};</span>
+                            // for eval code, we add a "&lt;?php" line at the beginning to get syntax highlighting (see sourceRequest)
+<span class="cstat-no" title="statement not covered" >                            line++;</span>
+                        } else {
+                            // XDebug paths are URIs, VS Code file paths
+                            const filePath = convertDebuggerPathToClient(urlObject, this._args.localSourceRoot, this._args.serverSourceRoot);
+                            // "Name" of the source and the actual file path
+                            source = {name: path.basename(filePath), path: filePath};
+                        }
+                        // a new, unique ID for scopeRequests
+                        const stackFrameId = this._stackFrameIdCounter++;
+                        // save the connection this stackframe belongs to and the level of the stackframe under the stacktrace id
+                        this._stackFrames.set(stackFrameId, stackFrame);
+                        // prepare response for VS Code (column is always 1 since XDebug doesn't tell us the column)
+                        return {id: stackFrameId, name: stackFrame.name, source, line, column: 1};
+                    })
+                };
+            }
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        this.sendResponse(response);
+    }
+&nbsp;
+    protected async <span class="fstat-no" title="function not covered" >sourceRequest</span>(response: VSCodeDebugProtocol.SourceResponse, args: VSCodeDebugProtocol.SourceArguments) {
+<span class="cstat-no" title="statement not covered" >        try {</span>
+<span class="cstat-no" title="statement not covered" >            if (!this._sources.has(args.sourceReference)) {</span>
+<span class="cstat-no" title="statement not covered" >                throw new Error(`Unknown sourceReference ${args.sourceReference}`);</span>
+            }
+            const {connection, url} = <span class="cstat-no" title="statement not covered" >this._sources.get(args.sourceReference)!;</span>
+            let {source} = <span class="cstat-no" title="statement not covered" >await connection.sendSourceCommand(url);</span>
+<span class="cstat-no" title="statement not covered" >            if (!/^\s*&lt;\?(php|=)/.test(source)) {</span>
+                // we do this because otherwise VS Code would not show syntax highlighting for eval() code
+<span class="cstat-no" title="statement not covered" >                source = '&lt;?php\n' + source;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            response.body = {content: source, mimeType: 'application/x-php'};</span>
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        this.sendResponse(response);</span>
+    }
+&nbsp;
+    protected async scopesRequest(response: VSCodeDebugProtocol.ScopesResponse, args: VSCodeDebugProtocol.ScopesArguments) {
+        try {
+            let scopes: vscode.Scope[] = [];
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (this._errorStackFrames.has(args.frameId)) {
+                // VS Code is requesting the scopes for a virtual error stack frame
+                const status = <span class="cstat-no" title="statement not covered" >this._errorStackFrames.get(args.frameId)!;</span>
+<span class="cstat-no" title="statement not covered" >                if (status.exception) {</span>
+                    const variableId = <span class="cstat-no" title="statement not covered" >this._variableIdCounter++;</span>
+<span class="cstat-no" title="statement not covered" >                    this._errorScopes.set(variableId, status);</span>
+<span class="cstat-no" title="statement not covered" >                    scopes = [new vscode.Scope(status.exception.name.replace(/^(.*\\)+/g, ''), variableId)];</span>
+                }
+            } else {
+                const stackFrame = this._stackFrames.get(args.frameId);
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (!stackFrame) {
+<span class="cstat-no" title="statement not covered" >                    throw new Error(`Unknown frameId ${args.frameId}`);</span>
+                }
+                const contexts = await stackFrame.getContexts();
+                scopes = contexts.map(context =&gt; {
+                    const variableId = this._variableIdCounter++;
+                    // remember that this new variable ID is assigned to a SCOPE (in XDebug "context"), not a variable (in XDebug "property"),
+                    // so when VS Code does a variablesRequest with that ID we do a context_get and not a property_get
+                    this._contexts.set(variableId, context);
+                    // send VS Code the variable ID as identifier
+                    return new vscode.Scope(context.name, variableId);
+                });
+                const status = this._statuses.get(stackFrame.connection);
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (status &amp;&amp; status.exception) {
+                    const variableId = <span class="cstat-no" title="statement not covered" >this._variableIdCounter++;</span>
+<span class="cstat-no" title="statement not covered" >                    this._errorScopes.set(variableId, status);</span>
+<span class="cstat-no" title="statement not covered" >                    scopes.unshift(new vscode.Scope(status.exception.name.replace(/^(.*\\)+/g, ''), variableId));</span>
+                }
+            }
+            response.body = {scopes};
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        this.sendResponse(response);
+    }
+&nbsp;
+    protected async variablesRequest(response: VSCodeDebugProtocol.VariablesResponse, args: VSCodeDebugProtocol.VariablesArguments) {
+        try {
+            const variablesReference = args.variablesReference;
+            let variables: VSCodeDebugProtocol.Variable[];
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (this._errorScopes.has(variablesReference)) {
+                // this is a virtual error scope
+                const status = <span class="cstat-no" title="statement not covered" >this._errorScopes.get(variablesReference)!;</span>
+<span class="cstat-no" title="statement not covered" >                variables = [</span>
+                    new vscode.Variable('type', status.exception.name),
+                    new vscode.Variable('message', '"' + status.exception.message + '"')
+                ];
+<span class="cstat-no" title="statement not covered" >                if (status.exception.code !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    variables.push(new vscode.Variable('code', status.exception.code + ''));</span>
+                }
+            } else {
+                // it is a real scope
+                let properties: xdebug.BaseProperty[];
+                if (this._contexts.has(variablesReference)) {
+                    // VS Code is requesting the variables for a SCOPE, so we have to do a context_get
+                    const context = this._contexts.get(variablesReference)!;
+                    properties = await context.getProperties();
+                } else <span class="missing-if-branch" title="else path not taken" >E</span>if (this._properties.has(variablesReference)) {
+                    // VS Code is requesting the subelements for a variable, so we have to do a property_get
+                    const property = this._properties.get(variablesReference)!;
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (property.hasChildren) {
+                        if (property.children.length === property.numberOfChildren) {
+                            properties = property.children;
+                        } else {
+                            properties = await property.getChildren();
+                        }
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        properties = [];</span>
+                    }
+                } else <span class="cstat-no" title="statement not covered" >if (this._evalResultProperties.has(variablesReference)) {</span>
+                    // the children of properties returned from an eval command are always inlined, so we simply resolve them
+                    const property = <span class="cstat-no" title="statement not covered" >this._evalResultProperties.get(variablesReference)!;</span>
+<span class="cstat-no" title="statement not covered" >                    properties = property.hasChildren ? property.children : [];</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    throw new Error('Unknown variable reference');</span>
+                }
+                variables = properties.map(property =&gt; {
+                    const displayValue = formatPropertyValue(property);
+                    let variablesReference: number;
+                    if (property.hasChildren || property.type === 'array' || property.type === 'object') {
+                        // if the property has children, we have to send a variableReference back to VS Code
+                        // so it can receive the child elements in another request.
+                        // for arrays and objects we do it even when it does not have children so the user can still expand/collapse the entry
+                        variablesReference = this._variableIdCounter++;
+                        <span class="missing-if-branch" title="else path not taken" >E</span>if (property instanceof xdebug.Property) {
+                            this._properties.set(variablesReference, property);
+                        } else <span class="cstat-no" title="statement not covered" >if (property instanceof xdebug.EvalResultProperty) {</span>
+<span class="cstat-no" title="statement not covered" >                            this._evalResultProperties.set(variablesReference, property);</span>
+                        }
+                    } else {
+                        variablesReference = 0;
+                    }
+                    const variable: VSCodeDebugProtocol.Variable = {
+                        name: property.name,
+                        value: displayValue,
+                        type: property.type,
+                        variablesReference
+                    };
+                    return variable;
+                });
+            }
+            response.body = {variables};
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        this.sendResponse(response);
+    }
+&nbsp;
+    protected async continueRequest(response: VSCodeDebugProtocol.ContinueResponse, args: VSCodeDebugProtocol.ContinueArguments) {
+        let xdebugResponse: xdebug.StatusResponse | undefined;
+        try {
+            const connection = this._connections.get(args.threadId);
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!connection) {
+<span class="cstat-no" title="statement not covered" >                throw new Error('Unknown thread ID ' + args.threadId);</span>
+            }
+            xdebugResponse = await connection.sendRunCommand();
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+<span class="cstat-no" title="statement not covered" >            if (xdebugResponse) {</span>
+<span class="cstat-no" title="statement not covered" >                this._checkStatus(xdebugResponse);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        response.body = {
+            allThreadsContinued: false
+        };
+        this.sendResponse(response);
+        this._checkStatus(xdebugResponse);
+    }
+&nbsp;
+    protected async <span class="fstat-no" title="function not covered" >nextRequest</span>(response: VSCodeDebugProtocol.NextResponse, args: VSCodeDebugProtocol.NextArguments) {
+        let xdebugResponse: xdebug.StatusResponse | undefined;
+<span class="cstat-no" title="statement not covered" >        try {</span>
+            const connection = <span class="cstat-no" title="statement not covered" >this._connections.get(args.threadId);</span>
+<span class="cstat-no" title="statement not covered" >            if (!connection) {</span>
+<span class="cstat-no" title="statement not covered" >                throw new Error('Unknown thread ID ' + args.threadId);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            xdebugResponse = await connection.sendStepOverCommand();</span>
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+<span class="cstat-no" title="statement not covered" >            if (xdebugResponse) {</span>
+<span class="cstat-no" title="statement not covered" >                this._checkStatus(xdebugResponse);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        this.sendResponse(response);</span>
+<span class="cstat-no" title="statement not covered" >        this._checkStatus(xdebugResponse);</span>
+    }
+&nbsp;
+    protected async <span class="fstat-no" title="function not covered" >stepInRequest</span>(response: VSCodeDebugProtocol.StepInResponse, args: VSCodeDebugProtocol.StepInArguments) {
+        let xdebugResponse: xdebug.StatusResponse | undefined;
+<span class="cstat-no" title="statement not covered" >        try {</span>
+            const connection = <span class="cstat-no" title="statement not covered" >this._connections.get(args.threadId);</span>
+<span class="cstat-no" title="statement not covered" >            if (!connection) {</span>
+<span class="cstat-no" title="statement not covered" >                throw new Error('Unknown thread ID ' + args.threadId);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            xdebugResponse = await connection.sendStepIntoCommand();</span>
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+<span class="cstat-no" title="statement not covered" >            if (xdebugResponse) {</span>
+<span class="cstat-no" title="statement not covered" >                this._checkStatus(xdebugResponse);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        this.sendResponse(response);</span>
+<span class="cstat-no" title="statement not covered" >        this._checkStatus(xdebugResponse);</span>
+    }
+&nbsp;
+    protected async <span class="fstat-no" title="function not covered" >stepOutRequest</span>(response: VSCodeDebugProtocol.StepOutResponse, args: VSCodeDebugProtocol.StepOutArguments) {
+        let xdebugResponse: xdebug.StatusResponse | undefined;
+<span class="cstat-no" title="statement not covered" >        try {</span>
+            const connection = <span class="cstat-no" title="statement not covered" >this._connections.get(args.threadId);</span>
+<span class="cstat-no" title="statement not covered" >            if (!connection) {</span>
+<span class="cstat-no" title="statement not covered" >                throw new Error('Unknown thread ID ' + args.threadId);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            xdebugResponse = await connection.sendStepOutCommand();</span>
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+<span class="cstat-no" title="statement not covered" >            if (xdebugResponse) {</span>
+<span class="cstat-no" title="statement not covered" >                this._checkStatus(xdebugResponse);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        this.sendResponse(response);</span>
+<span class="cstat-no" title="statement not covered" >        this._checkStatus(xdebugResponse);</span>
+    }
+&nbsp;
+    protected pauseRequest(response: VSCodeDebugProtocol.PauseResponse, args: VSCodeDebugProtocol.PauseArguments) {
+        this.sendErrorResponse(response, new Error('Pausing the execution is not supported by XDebug'));
+    }
+&nbsp;
+    protected async disconnectRequest(response: VSCodeDebugProtocol.DisconnectResponse, args: VSCodeDebugProtocol.DisconnectArguments) {
+        try {
+            await Promise.all(Array.from(this._connections).map(async ([id, connection]) =&gt; {
+                // Try to send stop command for 500ms
+                // If the script is running, just close the connection
+                await Promise.race([connection.sendStopCommand(), new Promise(resolve =&gt; setTimeout(resolve, 500))]);
+                await connection.close();
+                this._connections.delete(id);
+                this._waitingConnections.delete(connection);
+            }));
+            // If listening for connections, close server
+            if (this._server) {
+                await new Promise(resolve =&gt; this._server.close(resolve));
+            }
+            // If launched as CLI, kill process
+            if (this._phpProcess) {
+                this._phpProcess.kill();
+            }
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        this.sendResponse(response);
+        this.shutdown();
+    }
+&nbsp;
+    protected async evaluateRequest(response: VSCodeDebugProtocol.EvaluateResponse, args: VSCodeDebugProtocol.EvaluateArguments) {
+        try {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!args.frameId) {
+<span class="cstat-no" title="statement not covered" >                throw new Error('Cannot evaluate code without a connection');</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!this._stackFrames.has(args.frameId)) {
+<span class="cstat-no" title="statement not covered" >                throw new Error(`Unknown frameId ${args.frameId}`);</span>
+            }
+            const connection = this._stackFrames.get(args.frameId)!.connection;
+            const {result} = await connection.sendEvalCommand(args.expression);
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (result) {
+                const displayValue = formatPropertyValue(result);
+                let variablesReference: number;
+                // if the property has children, generate a variable ID and save the property (including children) so VS Code can request them
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (result.hasChildren || result.type === 'array' || result.type === 'object') {
+<span class="cstat-no" title="statement not covered" >                    variablesReference = this._variableIdCounter++;</span>
+<span class="cstat-no" title="statement not covered" >                    this._evalResultProperties.set(variablesReference, result);</span>
+                } else {
+                    variablesReference = 0;
+                }
+                response.body = {result: displayValue, variablesReference};
+            } else {
+<span class="cstat-no" title="statement not covered" >                response.body = {result: 'no result', variablesReference: 0};</span>
+            }
+            this.sendResponse(response);
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            this.sendErrorResponse(response, error);</span>
+        }
+    }
+}
+&nbsp;
+vscode.DebugSession.run(PhpDebugSession);
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jul 01 2017 12:59:29 GMT+0000 (UTC)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>

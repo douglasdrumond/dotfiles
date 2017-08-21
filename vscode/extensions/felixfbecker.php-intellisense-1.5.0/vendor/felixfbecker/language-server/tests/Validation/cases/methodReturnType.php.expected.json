@@ -1,0 +1,48 @@
+{
+    "references": {
+        "FooClass": [
+            "./methodReturnType.php"
+        ]
+    },
+    "definitions": {
+        "FooClass": {
+            "fqn": "FooClass",
+            "extends": [],
+            "isGlobal": true,
+            "roamed": false,
+            "isStatic": false,
+            "canBeInstantiated": true,
+            "symbolInformation": {
+                "name": "FooClass",
+                "kind": 5,
+                "location": {
+                    "uri": "./methodReturnType.php"
+                },
+                "containerName": ""
+            },
+            "type": null,
+            "declarationLine": "class FooClass {",
+            "documentation": null
+        },
+        "FooClass->foo()": {
+            "fqn": "FooClass->foo()",
+            "extends": [],
+            "isGlobal": false,
+            "roamed": false,
+            "isStatic": false,
+            "canBeInstantiated": false,
+            "symbolInformation": {
+                "name": "foo",
+                "kind": 6,
+                "location": {
+                    "uri": "./methodReturnType.php"
+                },
+                "containerName": "FooClass"
+            },
+            "type__tostring": "\\FooClass",
+            "type": {},
+            "declarationLine": "public function foo(): FooClass {",
+            "documentation": null
+        }
+    }
+}

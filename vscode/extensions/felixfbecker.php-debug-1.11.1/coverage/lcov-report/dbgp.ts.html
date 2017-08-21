@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dbgp.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> dbgp.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">90.48% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>57/63</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">65% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>13/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">78.57% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>11/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">91.38% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>53/58</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">158x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">354x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">178x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">178x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">176x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">138x</span>
+<span class="cline-any cline-yes">138x</span>
+<span class="cline-any cline-yes">138x</span>
+<span class="cline-any cline-yes">138x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+import * as net from 'net';
+import {EventEmitter} from 'events';
+import * as iconv from 'iconv-lite';
+import {DOMParser} from 'xmldom';
+&nbsp;
+/** The encoding all XDebug messages are encoded with */
+export const ENCODING = 'iso-8859-1';
+&nbsp;
+/** The two states the connection switches between */
+enum ParsingState {DataLength, Response}
+&nbsp;
+/** Wraps the NodeJS Socket and calls handleResponse() whenever a full response arrives */
+export class DbgpConnection extends EventEmitter {
+&nbsp;
+    private _socket: net.Socket;
+    private _parsingState: ParsingState;
+    private _chunksDataLength: number;
+    private _chunks: Buffer[];
+    private _dataLength: number;
+&nbsp;
+    constructor(socket: net.Socket) {
+        super();
+        this._socket = socket;
+        this._parsingState = ParsingState.DataLength;
+        this._chunksDataLength = 0;
+        this._chunks = [];
+        socket.on('data', (data: Buffer) =&gt; this._handleDataChunk(data));
+        socket.on('error', <span class="fstat-no" title="function not covered" >(e</span>rror: Error) =&gt; <span class="cstat-no" title="statement not covered" >this.emit('error', error))</span>;
+        socket.on('close', () =&gt; this.emit('close'));
+    }
+&nbsp;
+    private _handleDataChunk(data: Buffer) {
+        // Anatomy of packets: [data length] [NULL] [xml] [NULL]
+        // are we waiting for the data length or for the response?
+        if (this._parsingState === ParsingState.DataLength) {
+            // does data contain a NULL byte?
+            const nullByteIndex = data.indexOf(0);
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (nullByteIndex !== -1) {
+                // YES -&gt; we received the data length and are ready to receive the response
+                const lastPiece = data.slice(0, nullByteIndex);
+                this._chunks.push(lastPiece);
+                this._chunksDataLength += lastPiece.length;
+                this._dataLength = parseInt(iconv.decode(Buffer.concat(this._chunks, this._chunksDataLength), ENCODING));
+                // reset buffered chunks
+                this._chunks = [];
+                this._chunksDataLength = 0;
+                // switch to response parsing state
+                this._parsingState = ParsingState.Response;
+                // if data contains more info (except the NULL byte)
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (data.length &gt; nullByteIndex + 1) {
+                    // handle the rest of the packet as part of the response
+                    const rest = data.slice(nullByteIndex + 1);
+                    this._handleDataChunk(rest);
+                }
+            } else {
+                // NO -&gt; this is only part of the data length. We wait for the next data event
+<span class="cstat-no" title="statement not covered" >                this._chunks.push(data);</span>
+<span class="cstat-no" title="statement not covered" >                this._chunksDataLength += data.length;</span>
+            }
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>if (this._parsingState === ParsingState.Response) {
+            // does the new data together with the buffered data add up to the data length?
+            if (this._chunksDataLength + data.length &gt;= this._dataLength) {
+                // YES -&gt; we received the whole response
+                // append the last piece of the response
+                const lastResponsePiece = data.slice(0, this._dataLength - this._chunksDataLength);
+                this._chunks.push(lastResponsePiece);
+                this._chunksDataLength += data.length;
+                const response = Buffer.concat(this._chunks, this._chunksDataLength);
+                // call response handler
+                const xml = iconv.decode(response, ENCODING);
+                const parser = new DOMParser({
+                    errorHandler: {
+                        warning: <span class="fstat-no" title="function not covered" >warning</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >                            this.emit('warning', warning);</span>
+                        },
+                        error: error =&gt; {
+                            this.emit('error', error instanceof Error ? <span class="branch-0 cbranch-no" title="branch not covered" >error </span>: new Error(error));
+                        },
+                        fatalError: <span class="fstat-no" title="function not covered" >error</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >                            this.emit('error', error instanceof Error ? error : new Error(error));</span>
+                        }
+                    }
+                });
+                const document = parser.parseFromString(xml, 'application/xml');
+                this.emit('message', document);
+                // reset buffer
+                this._chunks = [];
+                this._chunksDataLength = 0;
+                // switch to data length parsing state
+                this._parsingState = ParsingState.DataLength;
+                // if data contains more info (except the NULL byte)
+                if (data.length &gt; lastResponsePiece.length + 1) {
+                    // handle the rest of the packet (after the NULL byte) as data length
+                    const rest = data.slice(lastResponsePiece.length + 1);
+                    this._handleDataChunk(rest);
+                }
+            } else {
+                // NO -&gt; this is not the whole response yet. We buffer it and wait for the next data event.
+                this._chunks.push(data);
+                this._chunksDataLength += data.length;
+            }
+        }
+    }
+&nbsp;
+    public write(command: Buffer): Promise&lt;void&gt; {
+        return new Promise&lt;void&gt;((resolve, reject) =&gt; {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (this._socket.writable) {
+                this._socket.write(command, () =&gt; {
+                    resolve();
+                });
+            } else {
+<span class="cstat-no" title="statement not covered" >                reject(new Error('socket not writable'));</span>
+            }
+        });
+    }
+&nbsp;
+    /** closes the underlying socket */
+    public close(): Promise&lt;void&gt; {
+        return new Promise&lt;void&gt;((resolve, reject) =&gt; {
+            this._socket.once('close', resolve);
+            this._socket.end();
+        });
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jul 01 2017 12:59:29 GMT+0000 (UTC)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>

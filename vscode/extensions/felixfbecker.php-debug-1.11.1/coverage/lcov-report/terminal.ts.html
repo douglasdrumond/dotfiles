@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for terminal.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> terminal.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">10.71% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>9/84</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">10.71% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>9/84</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+&nbsp;
+import * as Path from 'path';
+import * as FS from 'fs';
+import * as CP from 'child_process';
+&nbsp;
+export class Terminal {
+&nbsp;
+    private static _terminalService: ITerminalService;
+&nbsp;
+    public <span class="fstat-no" title="function not covered" >static</span> launchInTerminal(dir: string, args: string[], envVars: { [key: string]: string; }): Promise&lt;CP.ChildProcess&gt; {
+<span class="cstat-no" title="statement not covered" >        return this.terminalService().launchInTerminal(dir, args, envVars);</span>
+    }
+&nbsp;
+    public <span class="fstat-no" title="function not covered" >static</span> killTree(processId: number): Promise&lt;any&gt; {
+<span class="cstat-no" title="statement not covered" >        return this.terminalService().killTree(processId);</span>
+    }
+&nbsp;
+    /*
+     * Is the given runtime executable on the PATH.
+     */
+    public <span class="fstat-no" title="function not covered" >static</span> isOnPath(program: string): boolean {
+<span class="cstat-no" title="statement not covered" >        return this.terminalService().isOnPath(program);</span>
+    }
+&nbsp;
+    private <span class="fstat-no" title="function not covered" >static</span> terminalService(): ITerminalService {
+<span class="cstat-no" title="statement not covered" >        if (!this._terminalService) {</span>
+<span class="cstat-no" title="statement not covered" >            if (process.platform === 'win32') {</span>
+<span class="cstat-no" title="statement not covered" >                this._terminalService = new WindowsTerminalService();</span>
+            } else <span class="cstat-no" title="statement not covered" >if (process.platform === 'darwin') {</span>
+<span class="cstat-no" title="statement not covered" >                this._terminalService = new MacTerminalService();</span>
+            } else <span class="cstat-no" title="statement not covered" >if (process.platform === 'linux') {</span>
+<span class="cstat-no" title="statement not covered" >                this._terminalService = new LinuxTerminalService();</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                this._terminalService = new DefaultTerminalService();</span>
+            }
+        }
+<span class="cstat-no" title="statement not covered" >        return this._terminalService;</span>
+    }
+}
+&nbsp;
+interface ITerminalService {
+    launchInTerminal(dir: string, args: string[], envVars: { [key: string]: string; }): Promise&lt;CP.ChildProcess&gt;;
+    killTree(pid: number): Promise&lt;any&gt;;
+    isOnPath(program: string): boolean;
+}
+&nbsp;
+class DefaultTerminalService implements ITerminalService {
+&nbsp;
+    protected static TERMINAL_TITLE = 'VS Code Console';
+&nbsp;
+    public <span class="fstat-no" title="function not covered" >launchInTerminal</span>(dir: string, args: string[], envVars: { [key: string]: string; }): Promise&lt;CP.ChildProcess&gt; {
+<span class="cstat-no" title="statement not covered" >        throw new Error('launchInTerminal not implemented');</span>
+    }
+&nbsp;
+    public <span class="fstat-no" title="function not covered" >killTree</span>(pid: number): Promise&lt;any&gt; {
+&nbsp;
+        // on linux and OS X we kill all direct and indirect child processes as well
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return new Promise&lt;any&gt;(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            try {</span>
+                const cmd = <span class="cstat-no" title="statement not covered" >Path.join(__dirname, './terminateProcess.sh');</span>
+                const result = (&lt;any&gt;<span class="cstat-no" title="statement not covered" >CP).spawnSync(cmd, [pid.toString()]);</span>
+<span class="cstat-no" title="statement not covered" >                if (result.error) {</span>
+<span class="cstat-no" title="statement not covered" >                    reject(result.error);</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    resolve();</span>
+                }
+            } catch (err) {
+<span class="cstat-no" title="statement not covered" >                reject(err);</span>
+            }
+        });
+    }
+&nbsp;
+    public <span class="fstat-no" title="function not covered" >isOnPath</span>(program: string): boolean {
+        /*
+        var which = FS.existsSync(DefaultTerminalService.WHICH) ? DefaultTerminalService.WHICH : DefaultTerminalService.WHERE;
+        var cmd = Utils.format('{0} \'{1}\'', which, program);
+&nbsp;
+        try {
+            CP.execSync(cmd);
+&nbsp;
+            return process.ExitCode == 0;
+        }
+        catch (Exception) {
+            // ignore
+        }
+&nbsp;
+        return false;
+        */
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return true;</span>
+    }
+}
+&nbsp;
+class WindowsTerminalService extends DefaultTerminalService {
+&nbsp;
+    private static CMD = 'cmd.exe';
+&nbsp;
+    public <span class="fstat-no" title="function not covered" >launchInTerminal</span>(dir: string, args: string[], envVars: { [key: string]: string; }): Promise&lt;CP.ChildProcess&gt; {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return new Promise&lt;CP.ChildProcess&gt;(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+&nbsp;
+            const title = <span class="cstat-no" title="statement not covered" >`"${dir} - ${WindowsTerminalService.TERMINAL_TITLE}"`;</span>
+            const command = <span class="cstat-no" title="statement not covered" >`""${args.join('" "')}" &amp; pause"`;</span> // use '|' to only pause on non-zero exit code
+&nbsp;
+            const cmdArgs = <span class="cstat-no" title="statement not covered" >[</span>
+                '/c', 'start', title, '/wait',
+                'cmd.exe', '/c', command
+            ];
+&nbsp;
+            // merge environment variables into a copy of the process.env
+            const env = <span class="cstat-no" title="statement not covered" >extendObject(extendObject({}, process.env), envVars);</span>
+&nbsp;
+            const options: any = <span class="cstat-no" title="statement not covered" >{</span>
+                cwd: dir,
+                env: env,
+                windowsVerbatimArguments: true
+            };
+&nbsp;
+            const cmd = <span class="cstat-no" title="statement not covered" >CP.spawn(WindowsTerminalService.CMD, cmdArgs, options);</span>
+<span class="cstat-no" title="statement not covered" >            cmd.on('error', reject);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            resolve(cmd);</span>
+        });
+    }
+&nbsp;
+    public <span class="fstat-no" title="function not covered" >killTree</span>(pid: number): Promise&lt;any&gt; {
+&nbsp;
+        // when killing a process in Windows its child processes are *not* killed but become root processes.
+        // Therefore we use TASKKILL.EXE
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return new Promise&lt;any&gt;(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+            const cmd = <span class="cstat-no" title="statement not covered" >`taskkill /F /T /PID ${pid}`;</span>
+<span class="cstat-no" title="statement not covered" >            try {</span>
+<span class="cstat-no" title="statement not covered" >                CP.execSync(cmd);</span>
+<span class="cstat-no" title="statement not covered" >                resolve();</span>
+            } catch (err) {
+<span class="cstat-no" title="statement not covered" >                reject(err);</span>
+            }
+        });
+    }
+}
+&nbsp;
+class LinuxTerminalService extends DefaultTerminalService {
+&nbsp;
+    private static LINUX_TERM = '/usr/bin/gnome-terminal';	// private const string LINUX_TERM = "/usr/bin/x-terminal-emulator";
+    private static WAIT_MESSAGE = 'Press any key to continue...';
+&nbsp;
+    public <span class="fstat-no" title="function not covered" >launchInTerminal</span>(dir: string, args: string[], envVars: { [key: string]: string; }): Promise&lt;CP.ChildProcess&gt; {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return new Promise&lt;CP.ChildProcess&gt;(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (!FS.existsSync(LinuxTerminalService.LINUX_TERM)) {</span>
+<span class="cstat-no" title="statement not covered" >                reject(new Error(`Cannot find '${LinuxTerminalService.LINUX_TERM}' for launching the node program. See http://go.microsoft.com/fwlink/?linkID=534832#_20002`));</span>
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+&nbsp;
+            const bashCommand = <span class="cstat-no" title="statement not covered" >`cd "${dir}"; "${args.join('" "')}"; echo; read -p "${LinuxTerminalService.WAIT_MESSAGE}" -n1;`;</span>
+&nbsp;
+            const termArgs = <span class="cstat-no" title="statement not covered" >[</span>
+                '--title', `"${LinuxTerminalService.TERMINAL_TITLE}"`,
+                '-x', 'bash', '-c',
+                `\'\'${bashCommand}\'\'` 	// wrapping argument in two sets of ' because node is so "friendly" that it removes one set...
+            ];
+&nbsp;
+            // merge environment variables into a copy of the process.env
+            const env = <span class="cstat-no" title="statement not covered" >extendObject(extendObject({}, process.env), envVars);</span>
+&nbsp;
+            const options: any = <span class="cstat-no" title="statement not covered" >{</span>
+                env: env
+            };
+&nbsp;
+            const cmd = <span class="cstat-no" title="statement not covered" >CP.spawn(LinuxTerminalService.LINUX_TERM, termArgs, options);</span>
+<span class="cstat-no" title="statement not covered" >            cmd.on('error', reject);</span>
+<span class="cstat-no" title="statement not covered" >            cmd.on('exit', <span class="fstat-no" title="function not covered" >(c</span>ode: number) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                if (code === 0) {	// OK</span>
+<span class="cstat-no" title="statement not covered" >                    resolve();	</span>// since cmd is not the terminal process but just a launcher, we do not pass it in the resolve to the caller
+                } else {
+<span class="cstat-no" title="statement not covered" >                    reject(new Error('exit code: ' + code));</span>
+                }
+            });
+        });
+    }
+}
+&nbsp;
+class MacTerminalService extends DefaultTerminalService {
+&nbsp;
+    private static OSASCRIPT = '/usr/bin/osascript';	// osascript is the AppleScript interpreter on OS X
+&nbsp;
+    public <span class="fstat-no" title="function not covered" >launchInTerminal</span>(dir: string, args: string[], envVars: { [key: string]: string; }): Promise&lt;CP.ChildProcess&gt; {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return new Promise&lt;CP.ChildProcess&gt;(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+&nbsp;
+            // first fix the PATH so that 'runtimePath' can be found if installed with 'brew'
+            // Utilities.FixPathOnOSX();
+&nbsp;
+            // On OS X we do not launch the program directly but we launch an AppleScript that creates (or reuses) a Terminal window
+            // and then launches the program inside that window.
+&nbsp;
+            const osaArgs = <span class="cstat-no" title="statement not covered" >[</span>
+                Path.join(__dirname, './terminalHelper.scpt'),
+                '-t', MacTerminalService.TERMINAL_TITLE,
+                '-w', dir
+            ];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            for (const a of args) {</span>
+<span class="cstat-no" title="statement not covered" >                osaArgs.push('-pa');</span>
+<span class="cstat-no" title="statement not covered" >                osaArgs.push(a);</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (envVars) {</span>
+<span class="cstat-no" title="statement not covered" >                for (const key in envVars) {</span>
+<span class="cstat-no" title="statement not covered" >                    osaArgs.push('-e');</span>
+<span class="cstat-no" title="statement not covered" >                    osaArgs.push(key + '=' + envVars[key]);</span>
+                }
+            }
+&nbsp;
+            let stderr = <span class="cstat-no" title="statement not covered" >'';</span>
+            const osa = <span class="cstat-no" title="statement not covered" >CP.spawn(MacTerminalService.OSASCRIPT, osaArgs);</span>
+<span class="cstat-no" title="statement not covered" >            osa.on('error', reject);</span>
+<span class="cstat-no" title="statement not covered" >            osa.stderr.on('data', <span class="fstat-no" title="function not covered" >(d</span>ata: Buffer) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                stderr += data.toString();</span>
+            });
+<span class="cstat-no" title="statement not covered" >            osa.on('exit', <span class="fstat-no" title="function not covered" >(c</span>ode: number) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                if (code === 0) {	// OK</span>
+<span class="cstat-no" title="statement not covered" >                    resolve();	</span>// since cmd is not the terminal process but just the osa tool, we do not pass it in the resolve to the caller
+                } else {
+<span class="cstat-no" title="statement not covered" >                    if (stderr) {</span>
+<span class="cstat-no" title="statement not covered" >                        reject(new Error(stderr));</span>
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        reject(new Error('exit code: ' + code));</span>
+                    }
+                }
+            });
+        });
+    }
+}
+&nbsp;
+// ---- private utilities ----
+&nbsp;
+<span class="fstat-no" title="function not covered" >function extendObject&lt;T&gt;(</span>objectCopy: T, object: T): T {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    for (let key in object) {</span>
+<span class="cstat-no" title="statement not covered" >        if (object.hasOwnProperty(key)) {</span>
+            (&lt;any&gt;<span class="cstat-no" title="statement not covered" >objectCopy)[key] = (&lt;any&gt;object)[key];</span>
+        }
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return objectCopy;</span>
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jul 01 2017 12:59:29 GMT+0000 (UTC)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>

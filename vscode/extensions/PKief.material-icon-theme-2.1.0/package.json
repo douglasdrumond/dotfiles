@@ -1,0 +1,129 @@
+{
+	"name": "material-icon-theme",
+	"displayName": "Material Icon Theme",
+	"description": "Material Design Icons for Visual Studio Code",
+	"version": "2.1.0",
+	"publisher": "PKief",
+	"engines": {
+		"vscode": "^1.5.0"
+	},
+	"homepage": "https://github.com/PKief/vscode-material-icon-theme/blob/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/PKief/vscode-material-icon-theme.git"
+	},
+	"bugs": {
+		"url": "https://github.com/PKief/vscode-material-icon-theme/issues"
+	},
+	"icon": "logo.png",
+	"galleryBanner": {
+		"color": "#263238",
+		"theme": "dark"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"icons",
+		"theme",
+		"material",
+		"icon-theme",
+		"customization"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"iconThemes": [
+			{
+				"id": "material-icon-theme",
+				"label": "Material Icon Theme",
+				"path": "./out/src/material-icons.json"
+			}
+		],
+		"commands": [
+			{
+				"command": "extension.activateIcons",
+				"title": "Material Icons: Activate Icon Theme"
+			},
+			{
+				"command": "extension.toggleAngularIcons",
+				"title": "Material Icons: Toggle Angular Icons"
+			},
+			{
+				"command": "extension.toggleFolderIcons",
+				"title": "Material Icons: Toggle Folder Icons"
+			},
+			{
+				"command": "extension.restoreDefaultConfig",
+				"title": "Material Icons: Restore Default Configuration"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Show welcome message",
+			"properties": {
+				"material-icon-theme.showWelcomeMessage": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show the welcome message after first installation."
+				},
+				"material-icon-theme.showUpdateMessage": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show the update message after each update."
+				},
+				"material-icon-theme.angular.iconsEnabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable the icons for Angular files."
+				},
+				"material-icon-theme.folders.icons": {
+					"type": "string",
+					"default": "specific",
+					"description": "Set the type for the folder icons.",
+					"enum": [
+						"specific",
+						"classic",
+						"blue",
+						"none"
+					]
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run clean && npm run compile",
+		"clean": "rimraf ./out",
+		"compile": "tsc -p ./ && npm run copy:json",
+		"copy:json": "cpx \"src/**/*.json\" out/src/",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"tslint": "tslint -c tslint.json ./src/**/*.ts ./scripts/**/*ts",
+		"pretest": "npm run vscode:prepublish",
+		"test": "node ./node_modules/vscode/bin/test",
+		"check": "bithound check git@github.com:PKief/vscode-material-icon-theme.git",
+		"preview": "ts-node ./scripts/preview"
+	},
+	"dependencies": {
+		"opn": "^5.1.0",
+		"semver-compare": "^1.0.0"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.41",
+		"@types/node": "^8.0.19",
+		"bithound": "^1.7.0",
+		"cpx": "^1.5.0",
+		"mocha": "^3.5.0",
+		"rimraf": "^2.6.1",
+		"ts-node": "^3.3.0",
+		"tslint": "^5.5.0",
+		"typescript": "^2.4.2",
+		"vscode": "^1.1.4"
+	},
+	"__metadata": {
+		"id": "5db78037-f674-459f-a236-db622c427c5b",
+		"publisherId": "f9e5bc2f-fea1-4075-917f-d83e01e69f56",
+		"publisherDisplayName": "Philipp Kief"
+	}
+}
