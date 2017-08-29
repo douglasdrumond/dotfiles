@@ -8,32 +8,7 @@
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
-if [ "$HOSTNAME" = 'kusanagi' ]; then
-    # Android development
-    export PATH=$HOME/Applications/android-developer-tools/sdk/tools:$HOME/Applications/android-developer-tools/sdk/platform-tools:$HOME/Applications/android-developer-tools/ndk:$PATH
-
-elif [ "$HOSTNAME" = 'yamato' ]; then
-    # Android development
-    export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/Applications/android-developer-tools/ndk:$PATH"
-
-elif [ "$HOSTNAME" = "iwakura" ]; then
-    # Android tools
-    export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$HOME/Applications/android-studio/bin:$ANDROID_NDK:$PATH"
-    export PATH="$PATH:$ANDROID_HOME/build-tools/22.0.1"
-
-elif [ "$HOSTNAME" = "NOTE-360" ]; then
-    # Android tools
-    export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$HOME/Applications/android-studio/bin:$ANDROID_NDK:$PATH"
-    export PATH="$PATH:$ANDROID_HOME/build-tools/22.0.1"
-
-elif [ "$HOSTNAME" = "skye" ]; then
-    # Android tools
-    export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$HOME/Applications/android-studio/bin:$ANDROID_NDK:$PATH"
-    export PATH="$PATH:$ANDROID_HOME/build-tools/22.0.1"
-
-    # Google App Engine
-    export PATH="$HOME/Applications/google_appengine:$PATH"
-fi
+export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$HOME/Applications/android-studio/bin:$ANDROID_NDK:$PATH"
 
 if [ -d "$HOME/.cabal/bin" ]; then
     export PATH=$HOME/.cabal/bin:$PATH
