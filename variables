@@ -59,8 +59,15 @@ elif [ "$HOSTNAME" = "NOTE-360" ]; then
 fi
 
 if [ "$ENVIRONMENT" = "Darwin" ]; then
-    export JAVA_HOME=$(/usr/libexec/java_home)
-    #export JAVA7_HOME=$(/usr/libexec/java_home -v 1.7)
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+    export JAVA9_HOME=$(/usr/libexec/java_home -v 9)
+    export JAVA8_HOME=$(/usr/libexec/java_home -v 1.8)
+    export JAVA7_HOME=$(/usr/libexec/java_home -v 1.7)
+    export JAVA6_HOME=$(/usr/libexec/java_home -v 1.6)
+    export JDK_19="$JAVA9_HOME"
+    export JDK_18="$JAVA8_HOME"
+    export JDK_17="$JAVA7_HOME"
+    export JDK_16="$JAVA6_HOME"
 fi
 
 ###########################################################################
