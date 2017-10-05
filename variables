@@ -111,3 +111,7 @@ if [ "$ENVIRONMENT" = "Linux" ]; then
     GTK_IM_MODULE=cedilla
     QT_IM_MODULE=cedilla
 fi
+
+if [ -f "$HOME/.local-variables" ]; then
+    source "$HOME/.local-variables"
+fi
