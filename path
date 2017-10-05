@@ -14,7 +14,7 @@ if [ -d "$HOME/.cabal/bin" ]; then
     export PATH=$HOME/.cabal/bin:$PATH
 fi
 
-if [ -d "/usr/local/go" ]; then
+if [ -d "/usr/local/opt/go" ]; then
     export PATH=$PATH:$GOBIN
 fi
 
