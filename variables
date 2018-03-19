@@ -115,3 +115,5 @@ fi
 if [ -f "$HOME/.local-variables" ]; then
     source "$HOME/.local-variables"
 fi
+
+export ENV_SHIORI_DB="$DOTFILES_PATH/shiori.db"

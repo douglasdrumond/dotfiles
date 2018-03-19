@@ -6,7 +6,7 @@
 #   2. .path
 #   3. .aliases
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$HOME/Applications/android-studio/bin:$ANDROID_NDK:$PATH"
 
@@ -74,3 +74,13 @@ fi
 if [ -d "$HOME/Library/Python/2.7/bin" ]; then
     PATH=$PATH:$HOME/Library/Python/2.7/bin
 fi
+
+if [ -d "$HOME/Developer/3rd/flutter/bin" ]; then
+    PATH=$PATH:$HOME/Developer/3rd/flutter/bin
+fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+if [ -d "$HOME/.rvb/bin" ]; then
+    export PATH="$PATH:$HOME/.rvm/bin"
+fi
+

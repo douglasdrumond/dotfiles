@@ -174,13 +174,13 @@
 [credential]
     helper = cache
 #    helper = osxkeychain
-[apply]
-    whitespace = nowarn
-[branch]
-    autosetupmerge  = true
-    autosetuprebase = always
-[branch "master"]
-    rebase = true
+#[apply]
+#    whitespace = nowarn
+#[branch]
+#    autosetupmerge  = true
+#    autosetuprebase = always
+#[branch "master"]
+#    rebase = true
 [push]
   # 'git push' will push the current branch to its tracking branch
   # the usual default is to push all branches
@@ -215,6 +215,6 @@
     lineNumber = true
 [github]
     user = douglasdrumond
-[filter "media"]
-    clean = git-media-clean %f
-    smudge = git-media-smudge %f
+#[filter "media"]
+#    clean = git-media-clean %f
+#    smudge = git-media-smudge %f
