@@ -50,13 +50,7 @@ fi
 ###########################################################################
 # Java                                                                    #
 ###########################################################################
-if [ "$HOSTNAME" = "skye" ]; then
-    export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
-    #export JAVA7_HOME="/usr/lib/jvm/java-7-oracle"
-elif [ "$HOSTNAME" = "NOTE-360" ]; then
-    export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
-    #export JAVA7_HOME="/usr/lib/jvm/java-7-oracle"
-fi
+export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
 
 if [ "$ENVIRONMENT" = "Darwin" ]; then
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
