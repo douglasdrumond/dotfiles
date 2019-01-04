@@ -3,10 +3,7 @@ ln -s /home/douglasdrumz/Developer/dotfiles/bashrc ~/.bashrc
 ln -s /home/douglasdrumz/Developer/dotfiles/gitconfig ~/.gitconfig
 ln -s /home/douglasdrumz/Developer/dotfiles/gitignore ~/.gitignore
 ln -s /home/douglasdrumz/Developer/dotfiles/inputrc ~/.inputrc
-ln -s /home/douglasdrumz/Developer/dotfiles/link.sh ~/.link
 ln -s /home/douglasdrumz/Developer/dotfiles/path ~/.path
-ln -s /home/douglasdrumz/Developer/dotfiles/README.md ~/.README
-ln -s /home/douglasdrumz/Developer/dotfiles/shiori.db ~/.shiori
 ln -s /home/douglasdrumz/Developer/dotfiles/spacemacs ~/.spacemacs
 ln -s /home/douglasdrumz/Developer/dotfiles/tmux.conf ~/.tmux
 ln -s /home/douglasdrumz/Developer/dotfiles/variables ~/.variables
