@@ -52,7 +52,7 @@
     ammend = commit --amend # ammend your last commit
     cm = !git add -A && git commit -m
     save = !git add -A && git commit -m 'SAVEPOINT'
-    wip = commit -am "WIP" 
+    wip = commit -am "[CI Skip] WIP" 
 
     # checkout
     co = checkout                     # checkout
@@ -164,8 +164,9 @@
     summary   = true
     verbosity = 1
     prompt    = false
+    tool      = meld
     #tool      = Kaleidoscope
-    tool     = mvimdiff
+    #tool     = mvimdiff
     #tool     = sourcetree
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"

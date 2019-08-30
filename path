@@ -6,7 +6,11 @@
 #   2. .path
 #   3. .aliases
 
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+if [ -d "$VIMCONFIG/pack/bundle/start/fzf/bin" ]; then
+    export PATH="$PATH:$VIMCONFIG/pack/bundle/start/fzf/bin"
+fi
 
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$HOME/Applications/android-studio/bin:$ANDROID_NDK:$PATH"
 

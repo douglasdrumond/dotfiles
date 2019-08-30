@@ -110,4 +110,11 @@ if [ -f "$HOME/.local-variables" ]; then
     source "$HOME/.local-variables"
 fi
 
-export ENV_SHIORI_DB="$DOTFILES_PATH/shiori.db"
+#export ENV_SHIORI_DB="$DOTFILES_PATH/shiori.db"
+
+export VIMCONFIG=$HOME/.config/nvim
+export VIMDATA=$HOME/.local/share/nvim
+export FZF_DEFAULT_COMMAND='rg --files'
+export VISUAL=nvim
+export EDITOR=nvim
+export GIT_EDITOR=nvim

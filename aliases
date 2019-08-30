@@ -26,6 +26,9 @@ if [ "$ENVIRONMENT" = 'Darwin' ]; then
     alias multitask='defaults write com.apple.dock single-app -bool false && killall Dock'
 fi
 
+alias vim=nvim
+alias vi=nvim
+
 alias rawvim='vim -u NONE -U NONE --noplugin'
 alias pingg='ping google.com'
 alias ping8='ping 8.8.8.8'
