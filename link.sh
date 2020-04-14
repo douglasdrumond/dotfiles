@@ -9,6 +9,6 @@ ln -s `pwd`/tmux.conf ~/.tmux.conf
 ln -s `pwd`/variables ~/.variables
 ln -s `pwd`/xmobarrc ~/.xmobarrc
 ln -s `pwd`/Xmodmap ~/.Xmodmap
-ln -s `pwd`/xmonad ~/.xmonad
+#ln -s `pwd`/xmonad ~/.xmonad
 ln -s `pwd`/zcompdump ~/.zcompdump
 ln -s `pwd`/zshrc ~/.zshrc
