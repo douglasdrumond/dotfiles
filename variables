@@ -29,14 +29,6 @@ else
 fi
 export GIT_EDITOR="$EDITOR"
 
-if [ "$HOSTNAME" = "NOTE-360" ]; then
-    export GIT_AUTHOR_EMAIL="douglas.drumond@movile.com"
-    export GIT_COMMITTER_EMAIL="douglas.drumond@movile.com"
-elif [ "$HOSTNAME" = "iwakura" ]; then
-    export GIT_AUTHOR_EMAIL="douglas@mokriya.com"
-    export GIT_COMMITTER_EMAIL="douglas@mokriya.com"
-fi
-
 ###########################################################################
 # Go language variables                                                   #
 ###########################################################################
