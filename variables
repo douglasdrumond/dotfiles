@@ -64,6 +64,9 @@ export REPO_TRACE=1
 export USE_CCACHE=1
 export ANDROID_HOME="$HOME/Applications/android-sdk"
 export ANDROID_NDK="$HOME/Applications/android-ndk"
+if [ "$ENVIRONMENT" = "Darwin" ]; then
+  export ANDROID_HOME="$HOME/Library/Android/sdk"
+fi
 
 export ANDROID_SDK="$ANDROID_HOME"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
