@@ -113,3 +113,9 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export VISUAL=nvim
 export EDITOR=nvim
 export GIT_EDITOR=nvim
+
+
+export LDFLAGS="-L/usr/local/opt/postgresql@10/lib"
+export CPPFLAGS="-I/usr/local/opt/postgresql@10/include"
+
+DOCKERHOST="0.0.0.0"

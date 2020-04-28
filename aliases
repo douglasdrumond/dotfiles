@@ -98,3 +98,6 @@ alias tevim="emacsclient -t"
 
 alias weather='curl -s wttr.in | sed -n "1,7p"'
 #alias w=weather
+
+alias docker-compose="CURRENT_UID=$(id -u):$(id -g) DOCKERHOST=$DOCKERHOST docker-compose"
+
