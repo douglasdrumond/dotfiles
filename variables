@@ -5,117 +5,117 @@
 #   2. .path
 #   3. .aliases
 
-export HOSTNAME="`hostname -s`"
-export PAGER='less'
-export TZ="America/Sao_Paulo"
-export ENVIRONMENT=$(uname)
-export HISTFILE="$HOME/.zhistfile"
-export HISTSIZE=1000000
-export SAVEHIST=1000000
-
-if [ "$HOSTNAME" = "NOTE-360" ]; then
-    export GDRIVE="$HOME/GDrive/douglas.drumond@movile.com"
-elif [ "$HOSTNAME" = "iwakura" ]; then
-    export GDRIVE="$HOME/Documents/GDrive/douglas@mokriya.com"
-else
-    export GDRIVE="$HOME/GDrive/douglas@cafelinear.com"
-fi
-
-if [ "$ENVIRONMENT" = "Linux" ]; then
-    export EDITOR="vim"
-else
-    export EDITOR='mvim -v'
-    #export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
-fi
-export GIT_EDITOR="$EDITOR"
-
-###########################################################################
-# Go language variables                                                   #
-###########################################################################
-if [ -d /usr/local/opt/go ]; then
-    export GOROOT=/usr/local/opt/go/libexec
-    export GOBIN=$GOROOT/bin
-    export GOPATH=$HOME/go
-fi
-
-
-###########################################################################
-# Java                                                                    #
-###########################################################################
-export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
-
-if [ "$ENVIRONMENT" = "Darwin" ]; then
-    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-    #export JAVA9_HOME=$(/usr/libexec/java_home -v 9)
-    #export JAVA8_HOME=$(/usr/libexec/java_home -v 1.8)
-    #export JAVA7_HOME=$(/usr/libexec/java_home -v 1.7)
-    #export JAVA6_HOME=$(/usr/libexec/java_home -v 1.6)
-    #export JDK_19="$JAVA9_HOME"
-    #export JDK_18="$JAVA8_HOME"
-    #export JDK_17="$JAVA7_HOME"
-    #export JDK_16="$JAVA6_HOME"
-fi
-
-###########################################################################
-# For Android source                                                      #
-###########################################################################
-ulimit -S -n 1024
-export REPO_TRACE=1
-export USE_CCACHE=1
-export ANDROID_HOME="$HOME/Applications/android-sdk"
-export ANDROID_NDK="$HOME/Applications/android-ndk"
-if [ "$ENVIRONMENT" = "Darwin" ]; then
-  export ANDROID_HOME="$HOME/Library/Android/sdk"
-fi
-
-export ANDROID_SDK="$ANDROID_HOME"
-export ANDROID_SDK_ROOT="$ANDROID_HOME"
-export NDK="$ANDROID_NDK"
-export NDK_HOME="$ANDROID_NDK"
-###########################################################################
-
-
-###########################################################################
-# Gradle                                                                  #
-###########################################################################
-if [ -d "$HOME/Applications/gradle-current" ]; then
-    export GRADLE_HOME=$HOME/Applications/gradle-current
-fi
-###########################################################################
-
-###########################################################################
-# PLAN9                                                                   #
-###########################################################################
-if [ -d "/usr/local/plan9" ]; then
-    export PLAN9=/usr/local/plan9
-fi
-###########################################################################
-
-export NVM_DIR="$HOME/.nvm"
-
-export TODOTXT_DEFAULT_ACTION=ls
-export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'
-
-if [ "$ENVIRONMENT" = "Linux" ]; then
-    GTK_IM_MODULE=cedilla
-    QT_IM_MODULE=cedilla
-fi
-
-if [ -f "$HOME/.local-variables" ]; then
-    source "$HOME/.local-variables"
-fi
-
-#export ENV_SHIORI_DB="$DOTFILES_PATH/shiori.db"
-
-export VIMCONFIG=$HOME/.config/nvim
-export VIMDATA=$HOME/.local/share/nvim
-export FZF_DEFAULT_COMMAND='rg --files'
-export VISUAL=nvim
-export EDITOR=nvim
-export GIT_EDITOR=nvim
-
-
-export LDFLAGS="-L/usr/local/opt/postgresql@10/lib"
-export CPPFLAGS="-I/usr/local/opt/postgresql@10/include"
-
-DOCKERHOST="0.0.0.0"
+# export HOSTNAME="`hostname -s`"
+# export PAGER='less'
+# export TZ="America/Sao_Paulo"
+# export ENVIRONMENT=$(uname)
+# export HISTFILE="$HOME/.zhistfile"
+# export HISTSIZE=1000000
+# export SAVEHIST=1000000
+# 
+# if [ "$HOSTNAME" = "NOTE-360" ]; then
+#     export GDRIVE="$HOME/GDrive/douglas.drumond@movile.com"
+# elif [ "$HOSTNAME" = "iwakura" ]; then
+#     export GDRIVE="$HOME/Documents/GDrive/douglas@mokriya.com"
+# else
+#     export GDRIVE="$HOME/GDrive/douglas@cafelinear.com"
+# fi
+# 
+# if [ "$ENVIRONMENT" = "Linux" ]; then
+#     export EDITOR="vim"
+# else
+#     export EDITOR='mvim -v'
+#     #export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
+# fi
+# export GIT_EDITOR="$EDITOR"
+# 
+# ###########################################################################
+# # Go language variables                                                   #
+# ###########################################################################
+# if [ -d /usr/local/opt/go ]; then
+#     export GOROOT=/usr/local/opt/go/libexec
+#     export GOBIN=$GOROOT/bin
+#     export GOPATH=$HOME/go
+# fi
+# 
+# 
+# ###########################################################################
+# # Java                                                                    #
+# ###########################################################################
+# export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+# 
+# if [ "$ENVIRONMENT" = "Darwin" ]; then
+#     export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+#     #export JAVA9_HOME=$(/usr/libexec/java_home -v 9)
+#     #export JAVA8_HOME=$(/usr/libexec/java_home -v 1.8)
+#     #export JAVA7_HOME=$(/usr/libexec/java_home -v 1.7)
+#     #export JAVA6_HOME=$(/usr/libexec/java_home -v 1.6)
+#     #export JDK_19="$JAVA9_HOME"
+#     #export JDK_18="$JAVA8_HOME"
+#     #export JDK_17="$JAVA7_HOME"
+#     #export JDK_16="$JAVA6_HOME"
+# fi
+# 
+# ###########################################################################
+# # For Android source                                                      #
+# ###########################################################################
+# ulimit -S -n 1024
+# export REPO_TRACE=1
+# export USE_CCACHE=1
+# export ANDROID_HOME="$HOME/Applications/android-sdk"
+# export ANDROID_NDK="$HOME/Applications/android-ndk"
+# if [ "$ENVIRONMENT" = "Darwin" ]; then
+#   export ANDROID_HOME="$HOME/Library/Android/sdk"
+# fi
+# 
+# export ANDROID_SDK="$ANDROID_HOME"
+# export ANDROID_SDK_ROOT="$ANDROID_HOME"
+# export NDK="$ANDROID_NDK"
+# export NDK_HOME="$ANDROID_NDK"
+# ###########################################################################
+# 
+# 
+# ###########################################################################
+# # Gradle                                                                  #
+# ###########################################################################
+# if [ -d "$HOME/Applications/gradle-current" ]; then
+#     export GRADLE_HOME=$HOME/Applications/gradle-current
+# fi
+# ###########################################################################
+# 
+# ###########################################################################
+# # PLAN9                                                                   #
+# ###########################################################################
+# if [ -d "/usr/local/plan9" ]; then
+#     export PLAN9=/usr/local/plan9
+# fi
+# ###########################################################################
+# 
+# export NVM_DIR="$HOME/.nvm"
+# 
+# export TODOTXT_DEFAULT_ACTION=ls
+# export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'
+# 
+# if [ "$ENVIRONMENT" = "Linux" ]; then
+#     GTK_IM_MODULE=cedilla
+#     QT_IM_MODULE=cedilla
+# fi
+# 
+# if [ -f "$HOME/.local-variables" ]; then
+#     source "$HOME/.local-variables"
+# fi
+# 
+# #export ENV_SHIORI_DB="$DOTFILES_PATH/shiori.db"
+# 
+# export VIMCONFIG=$HOME/.config/nvim
+# export VIMDATA=$HOME/.local/share/nvim
+# export FZF_DEFAULT_COMMAND='rg --files'
+# export VISUAL=nvim
+# export EDITOR=nvim
+# export GIT_EDITOR=nvim
+# 
+# 
+# export LDFLAGS="-L/usr/local/opt/postgresql@10/lib"
+# export CPPFLAGS="-I/usr/local/opt/postgresql@10/include"
+# 
+# DOCKERHOST="0.0.0.0"

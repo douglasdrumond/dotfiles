@@ -6,85 +6,82 @@
 #   2. .path
 #   3. .aliases
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-
-if [ -d "$VIMCONFIG/pack/bundle/start/fzf/bin" ]; then
-    export PATH="$PATH:$VIMCONFIG/pack/bundle/start/fzf/bin"
-fi
-
-export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$HOME/Applications/android-studio/bin:$ANDROID_NDK:$PATH"
-
-if [ -d "$HOME/.cabal/bin" ]; then
-    export PATH=$HOME/.cabal/bin:$PATH
-fi
-
-if [ -d "/usr/local/opt/go" ]; then
-    export PATH=$PATH:$GOBIN
-fi
-
-if [ -d "/opt/PostgreSQL/9.1/bin" ]; then
-    export PATH=/opt/PostgreSQL/9.1/bin:$PATH
-fi
-
-
-#if [ -d "/Applications/Postgres.app/Contents/MacOS/bin" ]; then
-#    export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-#fi
-
-#if [ -d "/usr/local/share/python3" ]; then
-#    export PATH="/usr/local/share/python3:$PATH"
-#fi
-
-if [ -d "$HOME/Applications/go_appengine" ]; then
-    export PATH="$HOME/Applications/go_appengine:$PATH"
-fi
-
-# For MacPorts
-#if [ -d "/opt/local/bin" ]; then
-#    export PATH="/opt/local/bin:$PATH"
-#fi
-
-# Gradle
-if [ -d "$HOME/Applications/gradle-current" ]; then
-    export PATH="$HOME/Applications/gradle-current/bin:$PATH"
-fi
-
-if [ -n "$PLAN9" ]; then
-    export PATH=$PATH:$PLAN9/bin
-fi
-
-###########################################################################
-# Chromium                                                                #
-###########################################################################
-if [ -d "~/src/others/depot_tools" ]; then
-    export PATH="$PATH:~/src/others/depot_tools"
-fi
-
-# My custom binaries
-#export PATH="/Applications/Android Studio.app/sdk/build-tools/android-4.4W:$PATH"
-export PATH=$HOME/bin:$PATH
-export PATH=$PATH:$HOME/Applications/apache-maven/bin
-
-
-if [ -d "$HOME/Applications/google-cloud-sdk/bin" ]; then
-    export PATH="$PATH:$HOME/Applications/google-cloud-sdk/bin" 
-fi
-
-export PATH=$JAVA_HOME/bin:$PATH
-
-if [ -d "$HOME/.rvm" ]; then
-    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-fi
-if [ -d "$HOME/Library/Python/2.7/bin" ]; then
-    PATH=$PATH:$HOME/Library/Python/2.7/bin
-fi
-
-if [ -d "$HOME/Applications/flutter/bin" ]; then
-    PATH=$PATH:$HOME/Applications/flutter/bin
-fi
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-if [ -d "$HOME/.rvb/bin" ]; then
-    export PATH="$PATH:$HOME/.rvm/bin"
-fi
-
+# export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# 
+# if [ -d "$VIMCONFIG/pack/bundle/start/fzf/bin" ]; then
+#     export PATH="$PATH:$VIMCONFIG/pack/bundle/start/fzf/bin"
+# fi
+# 
+# export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$HOME/Applications/android-studio/bin:$ANDROID_NDK:$PATH"
+# 
+# if [ -d "$HOME/.cabal/bin" ]; then
+#     export PATH=$HOME/.cabal/bin:$PATH
+# fi
+# 
+# if [ -d "/usr/local/opt/go" ]; then
+#     export PATH=$PATH:$GOBIN
+# fi
+# 
+# if [ -d "/opt/PostgreSQL/9.1/bin" ]; then
+#     export PATH=/opt/PostgreSQL/9.1/bin:$PATH
+# fi
+# 
+# 
+# #if [ -d "/Applications/Postgres.app/Contents/MacOS/bin" ]; then
+# #    export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+# #fi
+# 
+# #if [ -d "/usr/local/share/python3" ]; then
+# #    export PATH="/usr/local/share/python3:$PATH"
+# #fi
+# 
+# if [ -d "$HOME/Applications/go_appengine" ]; then
+#     export PATH="$HOME/Applications/go_appengine:$PATH"
+# fi
+# 
+# # For MacPorts
+# #if [ -d "/opt/local/bin" ]; then
+# #    export PATH="/opt/local/bin:$PATH"
+# #fi
+# 
+# # Gradle
+# if [ -d "$HOME/Applications/gradle-current" ]; then
+#     export PATH="$HOME/Applications/gradle-current/bin:$PATH"
+# fi
+# 
+# if [ -n "$PLAN9" ]; then
+#     export PATH=$PATH:$PLAN9/bin
+# fi
+# 
+# ###########################################################################
+# # Chromium                                                                #
+# ###########################################################################
+# if [ -d "~/src/others/depot_tools" ]; then
+#     export PATH="$PATH:~/src/others/depot_tools"
+# fi
+# 
+# # My custom binaries
+# #export PATH="/Applications/Android Studio.app/sdk/build-tools/android-4.4W:$PATH"
+# export PATH=$HOME/bin:$PATH
+# export PATH=$PATH:$HOME/Applications/apache-maven/bin
+# 
+# 
+# if [ -d "$HOME/Applications/google-cloud-sdk/bin" ]; then
+#     export PATH="$PATH:$HOME/Applications/google-cloud-sdk/bin" 
+# fi
+# 
+# export PATH=$JAVA_HOME/bin:$PATH
+# 
+# if [ -d "$HOME/Library/Python/2.7/bin" ]; then
+#     PATH=$PATH:$HOME/Library/Python/2.7/bin
+# fi
+# 
+# if [ -d "$HOME/Applications/flutter/bin" ]; then
+#     PATH=$PATH:$HOME/Applications/flutter/bin
+# fi
+# 
+# # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# if [ -d "$HOME/.rvm/bin" ]; then
+#     export PATH="$HOME/.rvm/bin:$PATH"
+# fi
+# 

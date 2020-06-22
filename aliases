@@ -11,93 +11,93 @@
 #    #alias git=git-achievements
 #fi
 
-if [ "$ENVIRONMENT" = 'Linux' ]; then
-    alias ls='ls --color=auto'
-    alias pbcopy='xclip -selection clipboard'
-    alias pbpaste='xclip -selection clipboard -o'
-    alias ack='ack-grep'
-    alias xopen='xdg-open'
-fi
-
-if [ "$ENVIRONMENT" = 'Darwin' ]; then
-    alias rakeg='growlnotify -n vim -m "rake started"; rake | growlnotify -n vim &'
-    alias ls='ls -GphF'
-    alias singletask='defaults write com.apple.dock single-app -bool true && killall Dock'
-    alias multitask='defaults write com.apple.dock single-app -bool false && killall Dock'
-fi
-
-alias vim=nvim
-alias vi=nvim
-
-alias rawvim='vim -u NONE -U NONE --noplugin'
-alias pingg='ping google.com'
-alias ping8='ping 8.8.8.8'
-
-if [ "$HOSTNAME" = "MACMINI-019" ]; then
-    alias vim='mvim -v'
-    alias vi='vim'
-fi 
-
-if [ "$HOSTNAME" = 'kusanagi' ]; then
-    alias vim='mvim -v'
-    alias vi='vim'
-    alias cdand='cd ~/src/00-eclipse'
-fi
-
-if [ "$HOSTNAME" = 'yamato' ]; then
-    alias vim='mvim -v'
-    alias vi='vim'
-    alias cdand='cd ~/src/00-eclipse'
-    alias cdym='cd /Volumes/Y-Max'
-    alias cdevo='cd /Volumes/A4C'
-    alias cdsy='cd /Volumes/syrix'
-    alias mgit="GIT_SSH_COMMAND='ssh -i ~/.ssh/movile' git"
-    alias mhub="GIT_SSH_COMMAND='ssh -i ~/.ssh/movile' hub"
-    alias vpnusa='$HOME/src/3rd/sshuttle/sshuttle --dns -vvr root@karateack.com.br 0/0'
-fi
-
-if [ "$HOSTNAME" = 'NOTE-360' ]; then
-    alias emufast='emulator -scale 0.5 -avd gnexus -gpu on -qemu -m 2047 -enable-kvm'
-    alias pgit="GIT_SSH_COMMAND='ssh -i ~/.ssh/personal' git"
-fi
-
-if [ "$HOSTNAME" = 'skye' ]; then
-    alias emufast='emulator -scale 0.5 -avd gnexus -gpu on -qemu -m 2047 -enable-kvm'
-    alias mgit="GIT_SSH_COMMAND='ssh -i ~/.ssh/movile' git"
-    alias mhub="GIT_SSH_COMMAND='ssh -i ~/.ssh/movile' hub"
-    alias xopen="xdg-open"
-fi
-
-if [ "$HOSTNAME" = 'debian-y-max' ]; then
-    alias cdym='cd /mnt/hgfs/Y-Max'
-    alias cdevo='cd /mnt/hgfs/Y-Max/A4C'
-fi
-
-###########################################################################
-# http://zshwiki.org/home/examples/aliasnormal                            #
-###########################################################################
-# fast directory change
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
-alias .......='cd ../../../../../..'
-###########################################################################
-
-alias t='todo.sh -d $GDRIVE/todo.cfg'
-
-alias gr=./gradlew
-alias gw=./gradlew
-
-alias cddot="cd $HOME/Developer/dotfiles"
-alias cdvim="cd $HOME/Developer/vimfiles"
-
-alias evim="emacsclient -c -a emacs"
-alias tevim="emacsclient -t"
-
-alias weather='curl -s wttr.in | sed -n "1,7p"'
-#alias w=weather
-
-alias docker-compose="CURRENT_UID=$(id -u):$(id -g) DOCKERHOST=$DOCKERHOST docker-compose"
+#  if [ "$ENVIRONMENT" = 'Linux' ]; then
+#      alias ls='ls --color=auto'
+#      alias pbcopy='xclip -selection clipboard'
+#      alias pbpaste='xclip -selection clipboard -o'
+#      alias ack='ack-grep'
+#      alias xopen='xdg-open'
+#  fi
+#  
+#  if [ "$ENVIRONMENT" = 'Darwin' ]; then
+#      alias rakeg='growlnotify -n vim -m "rake started"; rake | growlnotify -n vim &'
+#      alias ls='ls -GphF'
+#      alias singletask='defaults write com.apple.dock single-app -bool true && killall Dock'
+#      alias multitask='defaults write com.apple.dock single-app -bool false && killall Dock'
+#  fi
+#  
+#  alias vim=nvim
+#  alias vi=nvim
+#  
+#  alias rawvim='vim -u NONE -U NONE --noplugin'
+#  alias pingg='ping google.com'
+#  alias ping8='ping 8.8.8.8'
+#  
+#  if [ "$HOSTNAME" = "MACMINI-019" ]; then
+#      alias vim='mvim -v'
+#      alias vi='vim'
+#  fi 
+#  
+#  if [ "$HOSTNAME" = 'kusanagi' ]; then
+#      alias vim='mvim -v'
+#      alias vi='vim'
+#      alias cdand='cd ~/src/00-eclipse'
+#  fi
+#  
+#  if [ "$HOSTNAME" = 'yamato' ]; then
+#      alias vim='mvim -v'
+#      alias vi='vim'
+#      alias cdand='cd ~/src/00-eclipse'
+#      alias cdym='cd /Volumes/Y-Max'
+#      alias cdevo='cd /Volumes/A4C'
+#      alias cdsy='cd /Volumes/syrix'
+#      alias mgit="GIT_SSH_COMMAND='ssh -i ~/.ssh/movile' git"
+#      alias mhub="GIT_SSH_COMMAND='ssh -i ~/.ssh/movile' hub"
+#      alias vpnusa='$HOME/src/3rd/sshuttle/sshuttle --dns -vvr root@karateack.com.br 0/0'
+#  fi
+#  
+#  if [ "$HOSTNAME" = 'NOTE-360' ]; then
+#      alias emufast='emulator -scale 0.5 -avd gnexus -gpu on -qemu -m 2047 -enable-kvm'
+#      alias pgit="GIT_SSH_COMMAND='ssh -i ~/.ssh/personal' git"
+#  fi
+#  
+#  if [ "$HOSTNAME" = 'skye' ]; then
+#      alias emufast='emulator -scale 0.5 -avd gnexus -gpu on -qemu -m 2047 -enable-kvm'
+#      alias mgit="GIT_SSH_COMMAND='ssh -i ~/.ssh/movile' git"
+#      alias mhub="GIT_SSH_COMMAND='ssh -i ~/.ssh/movile' hub"
+#      alias xopen="xdg-open"
+#  fi
+#  
+#  if [ "$HOSTNAME" = 'debian-y-max' ]; then
+#      alias cdym='cd /mnt/hgfs/Y-Max'
+#      alias cdevo='cd /mnt/hgfs/Y-Max/A4C'
+#  fi
+#  
+#  ###########################################################################
+#  # http://zshwiki.org/home/examples/aliasnormal                            #
+#  ###########################################################################
+#  # fast directory change
+#  alias ..='cd ..'
+#  alias ...='cd ../..'
+#  alias ....='cd ../../..'
+#  alias .....='cd ../../../..'
+#  alias ......='cd ../../../../..'
+#  alias .......='cd ../../../../../..'
+#  ###########################################################################
+#  
+#  alias t='todo.sh -d $GDRIVE/todo.cfg'
+#  
+#  alias gr=./gradlew
+#  alias gw=./gradlew
+#  
+#  alias cddot="cd $HOME/Developer/dotfiles"
+#  alias cdvim="cd $HOME/Developer/vimfiles"
+#  
+#  alias evim="emacsclient -c -a emacs"
+#  alias tevim="emacsclient -t"
+#  
+#  alias weather='curl -s wttr.in | sed -n "1,7p"'
+#  #alias w=weather
+#  
+#  alias docker-compose="CURRENT_UID=$(id -u):$(id -g) DOCKERHOST=$DOCKERHOST docker-compose"
 
