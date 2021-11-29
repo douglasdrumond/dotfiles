@@ -42,6 +42,8 @@
     bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
     bdclean = "!f() { git branch --merged ${1-develop} | grep -v " ${1-develop}$" | xargs git branch -d; }; f"
     bddone = "!f() { git checkout ${1-develop} && git up && git bdclean ${1-develop}; }; f"
+    bmclean = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs git branch -d; }; f"
+    bmdone = "!f() { git checkout ${1-main} && git up && git bclean ${1-main}; }; f"
 
     # commit
     blame  = blame -C
