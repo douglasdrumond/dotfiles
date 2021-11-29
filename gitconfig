@@ -20,7 +20,7 @@
     changed   = blue bold
     untracked = red
 [core]
-    editor       = vim
+	editor = code --wait --new-window
 	excludesfile = ~/.gitignore
     pager        = less -FRSX
     quotepath    = false
@@ -164,7 +164,7 @@
     summary   = true
     verbosity = 1
     prompt    = false
-    tool      = meld
+	tool = vscode
     #tool      = Kaleidoscope
     #tool     = mvimdiff
     #tool     = sourcetree
@@ -194,7 +194,7 @@
   # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
   # instead of a/b/c/d as prefixes for patches
     mnemonicprefix = true
-    tool           = Kaleidoscope
+	tool = vscode
 [difftool]
     prompt = false
 [difftool "Kaleidoscope"]
@@ -221,3 +221,7 @@
 #[filter "media"]
 #    clean = git-media-clean %f
 #    smudge = git-media-smudge %f
+[difftool "vscode"]
+	cmd = "code --wait --diff  "
+[mergetool "vscode"]
+	cmd = "code --wait "
