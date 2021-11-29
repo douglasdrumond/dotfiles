@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/douglas/.oh-my-zsh"
+export ZSH="/home/douglasdrumz/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -112,7 +112,7 @@ if [ -f "$HOME/.env" ]; then
     source "$HOME/.env"
 fi
 
-eval $(thefuck --alias)
+export PATH="$HOME/.local/bin:$PATH"
 
 export PATH="$HOME/bin:$PATH"
 
@@ -123,3 +123,4 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+eval $(thefuck --alias)
