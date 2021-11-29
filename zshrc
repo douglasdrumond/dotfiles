@@ -68,7 +68,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode git)
+plugins=(zsh-vi-mode git)
+#plugins=(vi-mode git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,7 +99,27 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Android SDK
+export PATH="$PATH:$HOME/Library/Android/sdk/tools"
+export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+
+
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+    source $HOME/.asdf/asdf.sh
+fi
+
+if [ -f "$HOME/.env" ]; then
+    source "$HOME/.env"
+fi
+
+eval $(thefuck --alias)
+
+export PATH="$HOME/bin:$PATH"
+
+export PATH="/usr/local/sbin:$PATH"
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-eval $(thefuck --alias)
