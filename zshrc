@@ -127,6 +127,7 @@ export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$(dirname $(dirname $(npm root -g)))/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
