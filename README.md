@@ -9,8 +9,10 @@ brew install thefuck
 ```
 
 ```
-brew install asdf
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
 ```
 
 ```
-asdf install npm
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf install nodejs latest
+```
