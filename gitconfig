@@ -219,7 +219,7 @@
     extendRegexp = true
     lineNumber = true
 [github]
-    user = douglasdrumond
+    user = douglasdrumz
 #[filter "media"]
 #    clean = git-media-clean %f
 #    smudge = git-media-smudge %f
