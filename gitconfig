@@ -20,7 +20,6 @@
     changed   = blue bold
     untracked = red
 [core]
-    #editor = code --wait --new-window
 	editor = nvim
 	excludesfile = ~/.gitignore
     pager        = less -FRSX

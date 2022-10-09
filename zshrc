@@ -107,9 +107,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias python=python3
+alias pip=pip3
+
 # Android SDK
-export PATH="$PATH:$HOME/Library/Android/sdk/tools"
-export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+#export PATH="$PATH:$HOME/Library/Android/sdk/tools"
+#export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 
 
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
@@ -127,14 +130,18 @@ export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$(dirname $(dirname $(npm root -g)))/bin:$PATH"
+#export PATH="$(dirname $(dirname $(npm root -g)))/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH"
 
+export PATH="$PATH:/usr/local/go/bin"
 
-eval $(thefuck --alias)
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/douglaskayama/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# eval $(thefuck --alias)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
