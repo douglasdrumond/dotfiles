@@ -110,9 +110,13 @@ source $ZSH/oh-my-zsh.sh
 alias python=python3
 alias pip=pip3
 
+alias ytdp='yt-dlp -o "%(playlist_index)02d - %(title)s [%(id)s].%(ext)s"'
+alias ytdfuji='yt-dlp --write-subs --sub-langs="en.*,ja,ko"'
+
 # Android SDK
-#export PATH="$PATH:$HOME/Library/Android/sdk/tools"
-#export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+export PATH="$PATH:$HOME/Library/Android/sdk/tools"
+export PATH="$PATH:$HOME/Library/Android/sdk/tools/bin"
+export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 
 
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
