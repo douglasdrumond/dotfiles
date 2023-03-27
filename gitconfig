@@ -214,7 +214,7 @@
     upload = true
 [user]
     name = Douglas Kayama
-    email = douglas@cafelinear.com
+    email = self@douglasdrumond.tech
 [grep]
     extendRegexp = true
     lineNumber = true
